@@ -5,15 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 class TripController extends Controller
 {
-    use AuthorizesRequests;
-
-    public function index()
+    public function __construct()
     {
-        $trips = Trip::with('user')->latest()->paginate(12);
+        $this->middleware(['auth']);
+    }
+
+    public function index(Request $request)
+    {
+        $query = Trip::with('user')->latest();
+
+        if ($request->filled('city')) {
+            $query->where('city', 'like', '%' . $request->city . '%');
+        }
+
+        if ($request->filled('date')) {
+            $date = $request->date;
+            $query->where(function($q) use ($date) {
+                $q->where('start_date', '<=', $date)
+                  ->where('end_date', '>=', $date);
+            });
+        }
+
+        $trips = $query->paginate(12);
         return view('trips.index', compact('trips'));
     }
 
@@ -29,7 +46,7 @@ class TripController extends Controller
             'description' => 'required|string',
             'city' => 'required|string|max:255',
             'buddies_needed' => 'required|integer|min:1',
-            'photo1' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'photo1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'photo2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'photo3' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'start_date' => 'required|date|after:today',
@@ -44,9 +61,10 @@ class TripController extends Controller
             }
         }
 
-        $trip = auth()->user()->trips()->create([
+        $trip = Trip::create([
             ...$validated,
-            ...$photos
+            ...$photos,
+            'user_id' => Auth::id()
         ]);
 
         return redirect()->route('trips.show', $trip)

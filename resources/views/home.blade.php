@@ -256,8 +256,13 @@
                 <div class="col-lg-8" data-aos="fade-right">
                     <h1 class="display-3 fw-bold mb-4">Discover Your Next Adventure</h1>
                     <p class="lead mb-4">Find the perfect travel companion and explore amazing destinations together</p>
-                    <a href="#booking" class="btn btn-lg btn-danger me-3">Book Now</a>
-                    <a href="#buddy" class="btn btn-lg btn-outline-light">Find a Buddy</a>
+                    @auth
+                        <a href="{{ route('trips.create') }}" class="btn btn-lg btn-danger me-3">Post a Trip</a>
+                        <a href="{{ route('trips.index') }}" class="btn btn-lg btn-outline-light">Find Trips</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-lg btn-danger me-3">Sign In to Post</a>
+                        <a href="{{ route('register') }}" class="btn btn-lg btn-outline-light">Join Now</a>
+                    @endauth
                 </div>
             </div>
         </div>

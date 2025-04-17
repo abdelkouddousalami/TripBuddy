@@ -16,273 +16,234 @@
             --dark-accent: #BC4749;
         }
 
-        body {
-            background-color: var(--light-color);
-            min-height: 100vh;
-            overflow-x: hidden;
-            padding-top: 76px; /* Added to account for fixed navbar */
-        }
-
+        /* Navbar Styles */
         .navbar {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .navbar-brand img {
-            height: 40px;
-        }
-
-        .nav-link {
-            color: var(--primary-color) !important;
-            font-weight: 500;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-color) !important;
-        }
-
-        .profile-header {
-            background: linear-gradient(rgba(56, 102, 65, 0.9), rgba(56, 102, 65, 0.9)), url("{{ asset('img/hero.jpg') }}") no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 100px 0 50px;
-            margin-top: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-header::before {
-            content: '';
-            position: absolute;
+            height: 105px !important;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
-            z-index: 1;
+            z-index: 1030;
         }
 
-        .profile-header .container {
+        .navbar-brand img {
+            height: 80px;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--light-color);
+        }
+
+        .nav-link {
             position: relative;
-            z-index: 2;
+            overflow: hidden;
+            color: var(--primary-color) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
         }
 
-        .profile-header h1 {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--dark-accent);
+            transition: 0.3s ease;
         }
 
-        .profile-header p {
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease 0.2s forwards;
+        .nav-link:hover::after {
+            left: 0;
         }
 
-        @keyframes fadeInUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .auth-buttons .btn {
+            margin-left: 0.5rem;
         }
 
-        .profile-stats {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: -50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateY(30px);
-            opacity: 0;
-            animation: slideUp 0.6s ease 0.4s forwards;
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(56, 102, 65, 0.7), rgba(56, 102, 65, 0.7)), url("{{ asset('img/hero.jpg') }}") no-repeat center center;
+            background-size: cover;
+            color: var(--light-color);
         }
 
-        @keyframes slideUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .user-info {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .user-info:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
+        /* Button Styles */
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: -100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
         }
 
         .btn-primary:hover {
             background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-color: var (--secondary-color);
         }
 
-        .btn-primary:hover::after {
-            left: 100%;
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
         }
 
-        .trip-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        .btn-danger {
+            background-color: var(--dark-accent);
+            border-color: var(--dark-accent);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section.bg-light {
+            background-color: var(--light-color) !important;
+        }
+
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
             border: none;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 100%;
-            transform: scale(0.98);
-            opacity: 0.9;
+            background-color: white;
         }
 
-        .trip-card:hover {
-            transform: scale(1) translateY(-10px);
-            opacity: 1;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .trip-image {
-            height: 200px;
+        .card-img-top {
+            height: 250px;
             object-fit: cover;
-            transition: all 0.4s ease;
+            object-position: center;
         }
 
-        .trip-card:hover .trip-image {
-            transform: scale(1.05);
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
         }
 
-        .stat-box {
-            text-align: center;
-            padding: 20px;
-            border-radius: 15px;
-            background: var(--light-color);
-            margin-bottom: 10px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+        .card-text {
+            flex: 1;
+            margin-bottom: 1rem;
         }
 
-        .stat-box:hover {
+        /* Section specific card styles */
+        #booking .card {
+            min-height: 400px;
+        }
+
+        #buddy .card, #destinations .card {
+            min-height: 450px;
+        }
+
+        /* Form styles in booking section */
+        #booking form {
+            margin-top: auto;
+        }
+
+        /* Make all buttons align at bottom */
+        .card .btn {
+            margin-top: auto;
+        }
+
+        /* Section padding consistency */
+        .section {
+            padding: 100px 0;
+        }
+
+        .row.g-4 {
+            --bs-gutter-y: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--light-color);
+            padding: 60px 0;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary-color);
+            margin: 0 10px;
+            transition: 0.3s ease;
+            color: var(--light-color);
+        }
+
+        .social-icon:hover {
+            background: var(--dark-accent);
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .stat-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.8), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-        }
-
-        .stat-box:hover::before {
-            transform: translateX(100%);
-        }
-
-        .stat-box i {
-            font-size: 24px;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-box:hover i {
-            transform: scale(1.2);
-        }
-
-        .stat-box h3 {
-            color: var(--dark-accent);
-            font-weight: bold;
-            margin: 10px 0;
-        }
-
-        .alert {
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .user-info i {
-            transition: transform 0.3s ease;
-        }
-
-        .user-info:hover i {
-            transform: scale(1.2) rotate(360deg);
+            color: var(--light-color);
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" data-aos="fade-down">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
+            <!-- Logo on the left -->
+            <a class="navbar-brand" href="#">
                 <img src="{{ asset('img/logo.png') }}" alt="TripBuddy Logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            
+            <!-- Hamburger menu for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <!-- Navigation items in the middle -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('trips.index') }}">Trips</a>
+                        <a class="nav-link" href="{{ route('trips.index') }}">Find Buddy</a>
                     </li>
-                    @auth
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('profile.show') }}">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                                @csrf
-                                <button type="submit" class="nav-link btn btn-link">Logout</button>
-                            </form>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Register</a>
-                        </li>
-                    @endauth
+                    <li class="nav-item">
+                        <a class="nav-link" href="#destinations">Destinations</a>
+                    </li>
                 </ul>
+                
+                <!-- Auth buttons on the right -->
+                <div class="auth-buttons">
+                    @guest
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary">Sign In</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary">Sign Up</a>
+                    @else
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="{{ route('profile.show') }}">My Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('trips.create') }}">Post a Trip</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    @endguest
+                </div>
             </div>
         </div>
     </nav>
