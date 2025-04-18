@@ -189,6 +189,179 @@
             transform: translateY(-5px);
             color: var(--light-color);
         }
+
+        .trip-container {
+            padding: 2rem;
+            margin-top: 6rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 10%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-control-next {
+            background: linear-gradient(-90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .carousel:hover .carousel-control-prev,
+        .carousel:hover .carousel-control-next {
+            opacity: 1;
+        }
+
+        .single-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .single-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Trip Details Page Styling */
+        .trip-container {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-top: 6rem;
+            padding: 2rem;
+        }
+
+        .trip-hero-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: var(--smooth-transition);
+        }
+
+        .trip-carousel {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .trip-carousel .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .trip-details {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: var(--glass-blur);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: var(--glass-border);
+        }
+
+        .trip-details i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .trip-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            text-shadow: var(--text-shadow);
+        }
+
+        .trip-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2C3E50;
+            margin: 1.5rem 0;
+        }
+
+        .trip-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+        }
+
+        .comments-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .comments-section h4 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .comment-form textarea {
+            border: 2px solid var(--sage-green);
+            border-radius: 12px;
+            padding: 1rem;
+            height: 120px;
+            transition: var(--smooth-transition);
+        }
+
+        .comment-form textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(136, 176, 106, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .action-buttons .btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -285,7 +458,7 @@
                                 </button>
                             </div>
                         @else
-                            <img src="{{ asset('storage/' . $trip->photo1) }}" class="d-block w-100 rounded" style="height: 400px; object-fit: cover;" alt="{{ $trip->title }}">
+                            <img src="{{ asset('storage/' . $trip->photo1) }}" class="d-block w-100 single-image" alt="{{ $trip->title }}">
                         @endif
                     </div>
 

@@ -7,7 +7,6 @@
             --dark-accent: #BC4749;
         }
 
-        /* Navbar Styles */
         .navbar {
             height: 105px !important;
             background: rgba(255, 255, 255, 0.95);
@@ -57,7 +56,6 @@
             margin-left: 0.5rem;
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(56, 102, 65, 0.7), rgba(56, 102, 65, 0.7)), url("{{ asset('img/hero.jpg') }}") no-repeat center center;
@@ -65,7 +63,6 @@
             color: var(--light-color);
         }
 
-        /* Button Styles */
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
@@ -91,7 +88,6 @@
             border-color: var(--dark-accent);
         }
 
-        /* Section Styles */
         .section {
             padding: 100px 0;
         }
@@ -128,7 +124,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Section specific card styles */
         #booking .card {
             min-height: 400px;
         }
@@ -137,17 +132,14 @@
             min-height: 450px;
         }
 
-        /* Form styles in booking section */
         #booking form {
             margin-top: auto;
         }
 
-        /* Make all buttons align at bottom */
         .card .btn {
             margin-top: auto;
         }
 
-        /* Section padding consistency */
         .section {
             padding: 100px 0;
         }
@@ -156,7 +148,6 @@
             --bs-gutter-y: 2rem;
         }
 
-        /* Footer */
         .footer {
             background: var(--primary-color);
             color: var(--light-color);
@@ -184,20 +175,16 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top" data-aos="fade-down">
         <div class="container">
-            <!-- Logo on the left -->
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('img/logo.png') }}" alt="TripBuddy Logo">
             </a>
             
-            <!-- Hamburger menu for mobile -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- Navigation items in the middle -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
@@ -213,7 +200,6 @@
                     @endauth
                 </ul>
                 
-                <!-- Auth buttons on the right -->
                 <div class="auth-buttons">
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Sign In</a>

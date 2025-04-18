@@ -189,6 +189,249 @@
             transform: translateY(-5px);
             color: var(--light-color);
         }
+
+        .image-upload-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .image-upload-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .image-preview-container {
+            margin-top: 10px;
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .image-preview-container:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-preview-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: all 0.5s ease;
+        }
+
+        .image-preview-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .remove-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-preview-container:hover .remove-image {
+            opacity: 1;
+        }
+
+        .remove-image:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        .form-control[type="file"] {
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 2px dashed var(--accent-color);
+            background: rgba(167, 201, 87, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .form-control[type="file"]:hover {
+            border-color: var(--secondary-color);
+            background: rgba(167, 201, 87, 0.2);
+        }
+
+        .carousel {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 10%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-control-next {
+            background: linear-gradient(-90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .carousel:hover .carousel-control-prev,
+        .carousel:hover .carousel-control-next {
+            opacity: 1;
+        }
+
+        .form-container {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 8rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-container h2 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        .form-label {
+            color: var(--secondary-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-label i {
+            color: var(--accent-color);
+        }
+
+        .form-control {
+            border: 2px solid var(--sage-green);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            transition: var(--smooth-transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(136, 176, 106, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .image-upload-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+            transition: var(--smooth-transition);
+        }
+
+        .image-upload-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .image-preview-container {
+            margin-top: 10px;
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: var(--glass-blur);
+            border: var(--glass-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .image-preview-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--smooth-transition);
+        }
+
+        .image-preview-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .remove-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: var(--glass-bg);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--smooth-transition);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--card-shadow);
+        }
+
+        .image-preview-container:hover .remove-image {
+            opacity: 1;
+        }
+
+        .remove-image:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .form-text {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: var(--smooth-transition);
+        }
+
+        .btn-lg:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .invalid-feedback {
+            color: var(--error-red);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -303,31 +546,40 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Photos (Optional)</label>
+                            <label class="form-label">Photos</label>
                             <div class="row g-3">
                                 <div class="col-md-4">
-                                    <input type="file" class="form-control @error('photo1') is-invalid @enderror" 
-                                           name="photo1" accept="image/*">
-                                    @error('photo1')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    <div class="image-upload-container">
+                                        <input type="file" class="form-control @error('photo1') is-invalid @enderror" 
+                                               id="photo1" name="photo1" accept="image/png">
+                                        <div id="preview1" class="image-preview-container"></div>
+                                        @error('photo1')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="file" class="form-control @error('photo2') is-invalid @enderror" 
-                                           name="photo2" accept="image/*">
-                                    @error('photo2')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    <div class="image-upload-container">
+                                        <input type="file" class="form-control @error('photo2') is-invalid @enderror" 
+                                               id="photo2" name="photo2" accept="image/png">
+                                        <div id="preview2" class="image-preview-container"></div>
+                                        @error('photo2')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="file" class="form-control @error('photo3') is-invalid @enderror" 
-                                           name="photo3" accept="image/*">
-                                    @error('photo3')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    <div class="image-upload-container">
+                                        <input type="file" class="form-control @error('photo3') is-invalid @enderror" 
+                                               id="photo3" name="photo3" accept="image/png">
+                                        <div id="preview3" class="image-preview-container"></div>
+                                        @error('photo3')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="col-12">
-                                    <small class="text-muted">You can upload up to 3 photos (optional). Supported formats: JPEG, PNG, JPG. Max size: 2MB each.</small>
+                                    <small class="text-muted">You can upload up to 3 photos (optional). Only PNG format is supported. Max size: 2MB each.</small>
                                 </div>
                             </div>
                         </div>
@@ -369,6 +621,45 @@
         handleImagePreview(document.getElementById('photo1'), 'preview1');
         handleImagePreview(document.getElementById('photo2'), 'preview2');
         handleImagePreview(document.getElementById('photo3'), 'preview3');
+    </script>
+    <script>
+        function handleImagePreview(input, previewId) {
+            const preview = document.getElementById(previewId);
+            
+            input.addEventListener('change', function() {
+                preview.innerHTML = '';
+                
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    const img = document.createElement('img');
+                    const removeBtn = document.createElement('button');
+                    
+                    reader.onload = function(e) {
+                        img.src = e.target.result;
+                        img.classList.add('preview-image');
+                        
+                        removeBtn.className = 'remove-image';
+                        removeBtn.innerHTML = '×';
+                        removeBtn.onclick = function(e) {
+                            e.preventDefault();
+                            input.value = '';
+                            preview.innerHTML = '';
+                        };
+                        
+                        preview.appendChild(img);
+                        preview.appendChild(removeBtn);
+                    }
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            handleImagePreview(document.getElementById('photo1'), 'preview1');
+            handleImagePreview(document.getElementById('photo2'), 'preview2');
+            handleImagePreview(document.getElementById('photo3'), 'preview3');
+        });
     </script>
 </body>
 </html>

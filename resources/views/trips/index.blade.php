@@ -189,6 +189,90 @@
             transform: translateY(-5px);
             color: var(--light-color);
         }
+
+        .trip-card {
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: white;
+            transition: transform 0.3s ease;
+            height: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .trip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .trip-card .carousel {
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+        }
+
+        .trip-card .carousel-item img,
+        .trip-card .trip-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .trip-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .city-badge {
+            display: inline-block;
+            background: rgba(167, 201, 87, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .trip-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 10%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-control-next {
+            background: linear-gradient(-90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .carousel:hover .carousel-control-prev,
+        .carousel:hover .carousel-control-next {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>

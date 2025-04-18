@@ -46,9 +46,9 @@ class TripController extends Controller
             'description' => 'required|string',
             'city' => 'required|string|max:255',
             'buddies_needed' => 'required|integer|min:1',
-            'photo1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'photo2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'photo3' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'photo1' => 'nullable|image|mimes:png|max:2048',
+            'photo2' => 'nullable|image|mimes:png|max:2048',
+            'photo3' => 'nullable|image|mimes:png|max:2048',
             'start_date' => 'required|date|after:today',
             'end_date' => 'required|date|after:start_date',
         ]);
@@ -56,8 +56,55 @@ class TripController extends Controller
         $photos = [];
         foreach (['photo1', 'photo2', 'photo3'] as $photo) {
             if ($request->hasFile($photo)) {
-                $path = $request->file($photo)->store('trips', 'public');
-                $photos[$photo] = $path;
+                try {
+                    $file = $request->file($photo);
+                    
+                    // Get image info
+                    $image = imagecreatefrompng($file->getRealPath());
+                    if (!$image) {
+                        continue;
+                    }
+
+                    // Create a new true color image
+                    $width = imagesx($image);
+                    $height = imagesy($image);
+                    
+                    // Calculate new dimensions maintaining aspect ratio
+                    $ratio = min(800/$width, 600/$height);
+                    $new_width = round($width * $ratio);
+                    $new_height = round($height * $ratio);
+                    
+                    // Create new image
+                    $new_image = imagecreatetruecolor($new_width, $new_height);
+                    
+                    // Preserve transparency
+                    imagealphablending($new_image, false);
+                    imagesavealpha($new_image, true);
+                    
+                    // Resize
+                    imagecopyresampled($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+                    
+                    // Generate unique filename
+                    $filename = uniqid('trip_') . '.png';
+                    $path = 'trips/' . $filename;
+                    
+                    // Save the image
+                    ob_start();
+                    imagepng($new_image);
+                    $imageData = ob_get_clean();
+                    
+                    // Store the processed image
+                    Storage::disk('public')->put($path, $imageData);
+                    
+                    // Clean up
+                    imagedestroy($image);
+                    imagedestroy($new_image);
+                    
+                    $photos[$photo] = $path;
+                } catch (\Exception $e) {
+                    \Log::error('Image processing failed: ' . $e->getMessage());
+                    continue;
+                }
             }
         }
 
@@ -91,9 +138,9 @@ class TripController extends Controller
             'description' => 'required|string',
             'city' => 'required|string|max:255',
             'buddies_needed' => 'required|integer|min:1',
-            'photo1' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'photo2' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'photo3' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'photo1' => 'nullable|image|mimes:png|max:2048',
+            'photo2' => 'nullable|image|mimes:png|max:2048',
+            'photo3' => 'nullable|image|mimes:png|max:2048',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
         ]);
@@ -101,11 +148,60 @@ class TripController extends Controller
         $photos = [];
         foreach (['photo1', 'photo2', 'photo3'] as $photo) {
             if ($request->hasFile($photo)) {
+                // Delete old photo if exists
                 if ($trip->$photo) {
                     Storage::disk('public')->delete($trip->$photo);
                 }
-                $path = $request->file($photo)->store('trips', 'public');
-                $photos[$photo] = $path;
+
+                try {
+                    $file = $request->file($photo);
+                    
+                    // Get image info
+                    $image = imagecreatefrompng($file->getRealPath());
+                    if (!$image) {
+                        continue;
+                    }
+
+                    // Create a new true color image
+                    $width = imagesx($image);
+                    $height = imagesy($image);
+                    
+                    // Calculate new dimensions maintaining aspect ratio
+                    $ratio = min(800/$width, 600/$height);
+                    $new_width = round($width * $ratio);
+                    $new_height = round($height * $ratio);
+                    
+                    // Create new image
+                    $new_image = imagecreatetruecolor($new_width, $new_height);
+                    
+                    // Preserve transparency
+                    imagealphablending($new_image, false);
+                    imagesavealpha($new_image, true);
+                    
+                    // Resize
+                    imagecopyresampled($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+                    
+                    // Generate unique filename
+                    $filename = uniqid('trip_') . '.png';
+                    $path = 'trips/' . $filename;
+                    
+                    // Save the image
+                    ob_start();
+                    imagepng($new_image);
+                    $imageData = ob_get_clean();
+                    
+                    // Store the processed image
+                    Storage::disk('public')->put($path, $imageData);
+                    
+                    // Clean up
+                    imagedestroy($image);
+                    imagedestroy($new_image);
+                    
+                    $photos[$photo] = $path;
+                } catch (\Exception $e) {
+                    \Log::error('Image processing failed: ' . $e->getMessage());
+                    continue;
+                }
             }
         }
 

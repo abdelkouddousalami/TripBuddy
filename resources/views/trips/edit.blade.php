@@ -44,7 +44,7 @@
             <div class="row g-3">
                 <div class="col-md-4">
                     <input type="file" class="form-control @error('photo1') is-invalid @enderror" 
-                           name="photo1" accept="image/*">
+                           name="photo1" accept="image/png">
                     @if($trip->photo1)
                         <div class="mt-2">
                             <img src="{{ asset('storage/' . $trip->photo1) }}" alt="Current photo 1" class="img-thumbnail" style="height: 100px">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-md-4">
                     <input type="file" class="form-control @error('photo2') is-invalid @enderror" 
-                           name="photo2" accept="image/*">
+                           name="photo2" accept="image/png">
                     @if($trip->photo2)
                         <div class="mt-2">
                             <img src="{{ asset('storage/' . $trip->photo2) }}" alt="Current photo 2" class="img-thumbnail" style="height: 100px">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-md-4">
                     <input type="file" class="form-control @error('photo3') is-invalid @enderror" 
-                           name="photo3" accept="image/*">
+                           name="photo3" accept="image/png">
                     @if($trip->photo3)
                         <div class="mt-2">
                             <img src="{{ asset('storage/' . $trip->photo3) }}" alt="Current photo 3" class="img-thumbnail" style="height: 100px">
@@ -79,7 +79,7 @@
                     @enderror
                 </div>
                 <div class="col-12">
-                    <small class="text-muted">You can upload up to 3 photos (optional). Leave empty to keep current photos. Supported formats: JPEG, PNG, JPG. Max size: 2MB each.</small>
+                    <small class="text-muted">You can upload up to 3 photos (optional). Only PNG format is supported. Max size: 2MB each.</small>
                 </div>
             </div>
         </div>
