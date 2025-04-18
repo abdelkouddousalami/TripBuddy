@@ -23,7 +23,7 @@
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             padding: 1rem 0;
-            position: fixed;
+        
             top: 0;
             left: 0;
             right: 0;
