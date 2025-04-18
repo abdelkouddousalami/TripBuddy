@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'city'
+        'city',
+        'role'
     ];
 
     /**
@@ -50,5 +51,29 @@ class User extends Authenticatable
     public function trips(): HasMany
     {
         return $this->hasMany(Trip::class);
+    }
+
+    /**
+     * Get the comments associated with the user.
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * Check if user is admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if user is tripper
+     */
+    public function isTripper(): bool
+    {
+        return $this->role === 'tripper';
     }
 }

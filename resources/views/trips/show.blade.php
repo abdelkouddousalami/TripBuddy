@@ -339,6 +339,61 @@
                             </form>
                         </div>
                     @endif
+
+                    <!-- Comments Section -->
+                    <div class="mt-5">
+                        <h4 class="mb-4">Comments</h4>
+                        
+                        <!-- Comment Form -->
+                        <form action="{{ route('comments.store', $trip) }}" method="POST" class="mb-4">
+                            @csrf
+                            <div class="form-group">
+                                <textarea name="content" class="form-control @error('content') is-invalid @enderror" 
+                                          rows="3" placeholder="Share your thoughts about this trip..."></textarea>
+                                @error('content')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">
+                                <i class="fas fa-paper-plane"></i> Post Comment
+                            </button>
+                        </form>
+
+                        <!-- Comments List -->
+                        <div class="comments-list">
+                            @forelse($trip->comments()->with('user')->latest()->get() as $comment)
+                                <div class="comment card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">
+                                                <i class="fas fa-user-circle"></i>
+                                                {{ $comment->user->name }}
+                                                <small class="text-muted">
+                                                    {{ $comment->created_at->diffForHumans() }}
+                                                </small>
+                                            </h6>
+                                            @if(Auth::id() === $comment->user_id)
+                                                <form action="{{ route('comments.destroy', $comment) }}" 
+                                                      method="POST" 
+                                                      onsubmit="return confirm('Are you sure you want to delete this comment?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-link text-danger p-0">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                        <p class="mb-0 mt-2">{{ $comment->content }}</p>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="text-muted">
+                                    No comments yet. Be the first to comment!
+                                </div>
+                            @endforelse
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

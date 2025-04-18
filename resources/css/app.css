@@ -35,3 +35,56 @@
 main {
     margin-top: 80px;
 }
+
+/* Comments Section Styles */
+.comments-list {
+    margin-top: 2rem;
+}
+
+.comment.card {
+    border: 1px solid rgba(106, 153, 78, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.comment.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.comment .card-body {
+    padding: 1.25rem;
+}
+
+.comment .text-muted {
+    font-size: 0.85rem;
+}
+
+.comment .fa-user-circle {
+    color: var(--forest-green);
+    margin-right: 0.5rem;
+}
+
+.comment .fa-trash-alt {
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.comment .fa-trash-alt:hover {
+    color: var(--dark-accent);
+}
+
+.comment form {
+    margin: 0;
+}
+
+textarea.form-control {
+    border: 2px solid rgba(106, 153, 78, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+textarea.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(167, 201, 87, 0.2);
+}

@@ -23,7 +23,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            
+            // Redirect based on user role
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } else {
+                return redirect()->route('profile.show');
+            }
         }
 
         return back()->withErrors([
@@ -50,10 +56,11 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'city' => $validated['city'],
+            'role' => 'tripper', // Set default role
         ]);
 
         Auth::login($user);
-        return redirect('/');
+        return redirect()->route('profile.show');
     }
 
     public function logout(Request $request)

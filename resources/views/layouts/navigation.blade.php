@@ -225,6 +225,9 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                                 <li><a class="dropdown-item" href="{{ route('profile.show') }}">My Profile</a></li>
+                                @if(Auth::user()->role === 'admin')
+                                    <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                                @endif
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
