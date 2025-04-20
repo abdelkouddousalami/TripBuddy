@@ -347,6 +347,226 @@
                         </div>
                     @endif
                 </div>
+
+                @if($user->role === 'tripper' && !$user->ownerRequests()->where('status', 'pending')->exists())
+                    <div class="card mb-4 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0"><i class="fas fa-hotel me-2"></i>Become an Owner</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Submit a request to become an owner and unlock additional features for managing your hotel or hostel.
+                            </div>
+
+                            <form action="{{ route('owner-requests.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                @csrf
+                                
+                                <div class="mb-4">
+                                    <label for="reason" class="form-label fw-bold">Why do you want to be an owner?</label>
+                                    <textarea class="form-control @error('reason') is-invalid @enderror" 
+                                            id="reason" name="reason" rows="3" required
+                                            placeholder="Explain why you want to become an owner and your experience in property management..."></textarea>
+                                    @error('reason')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="card mb-4 bg-light">
+                                    <div class="card-header">
+                                        <h5 class="mb-0"><i class="fas fa-building me-2"></i>Property Information</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="hotel_name" class="form-label fw-bold">Property Name</label>
+                                                <input type="text" class="form-control @error('hotel_name') is-invalid @enderror" 
+                                                       id="hotel_name" name="hotel_name" required
+                                                       placeholder="Enter your property name">
+                                                @error('hotel_name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label for="hotel_type" class="form-label fw-bold">Property Type</label>
+                                                <select class="form-select @error('hotel_type') is-invalid @enderror" 
+                                                        id="hotel_type" name="hotel_type" required>
+                                                    <option value="">Select type...</option>
+                                                    <option value="hotel">Hotel</option>
+                                                    <option value="hostel">Hostel</option>
+                                                </select>
+                                                @error('hotel_type')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label for="description" class="form-label fw-bold">Property Description</label>
+                                                <textarea class="form-control @error('description') is-invalid @enderror" 
+                                                         id="description" name="description" rows="4" required
+                                                         placeholder="Describe your property, its amenities, and what makes it unique..."></textarea>
+                                                @error('description')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-md-8">
+                                                <label for="address" class="form-label fw-bold">Address</label>
+                                                <input type="text" class="form-control @error('address') is-invalid @enderror" 
+                                                       id="address" name="address" required
+                                                       placeholder="Full property address">
+                                                @error('address')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label for="city" class="form-label fw-bold">City</label>
+                                                <input type="text" class="form-control @error('city') is-invalid @enderror" 
+                                                       id="city" name="city" required
+                                                       placeholder="City name">
+                                                @error('city')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-4 bg-light">
+                                    <div class="card-header">
+                                        <h5 class="mb-0"><i class="fas fa-images me-2"></i>Property Photos</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-md-12">
+                                                <label for="photo1" class="form-label fw-bold">
+                                                    Main Photo <span class="text-danger">*</span>
+                                                </label>
+                                                <input type="file" class="form-control @error('photo1') is-invalid @enderror" 
+                                                       id="photo1" name="photo1" accept="image/*" required
+                                                       onchange="previewImage(this, 'preview1')">
+                                                <div id="preview1" class="mt-2 d-none">
+                                                    <img src="" alt="Preview" class="img-thumbnail" style="max-height: 200px">
+                                                </div>
+                                                @error('photo1')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label for="photo2" class="form-label fw-bold">Additional Photo</label>
+                                                <input type="file" class="form-control @error('photo2') is-invalid @enderror" 
+                                                       id="photo2" name="photo2" accept="image/*"
+                                                       onchange="previewImage(this, 'preview2')">
+                                                <div id="preview2" class="mt-2 d-none">
+                                                    <img src="" alt="Preview" class="img-thumbnail" style="max-height: 200px">
+                                                </div>
+                                                @error('photo2')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label for="photo3" class="form-label fw-bold">Additional Photo</label>
+                                                <input type="file" class="form-control @error('photo3') is-invalid @enderror" 
+                                                       id="photo3" name="photo3" accept="image/*"
+                                                       onchange="previewImage(this, 'preview3')">
+                                                <div id="preview3" class="mt-2 d-none">
+                                                    <img src="" alt="Preview" class="img-thumbnail" style="max-height: 200px">
+                                                </div>
+                                                @error('photo3')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-4 bg-light">
+                                    <div class="card-header">
+                                        <h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Ownership Documentation</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="alert alert-warning">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                            Please provide official documentation that proves your ownership of the property.
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="proof_document" class="form-label fw-bold">
+                                                Proof of Ownership <span class="text-danger">*</span>
+                                            </label>
+                                            <input type="file" class="form-control @error('proof_document') is-invalid @enderror" 
+                                                   id="proof_document" name="proof_document" 
+                                                   accept=".pdf,.jpg,.jpeg,.png" required>
+                                            <div class="form-text">
+                                                Accepted formats: PDF, JPG, JPEG, PNG (Max size: 2MB)
+                                            </div>
+                                            @error('proof_document')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i> Submit Owner Request
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                @elseif($user->ownerRequests()->where('status', 'pending')->exists())
+                    <div class="alert alert-info" data-aos="fade-up" data-aos-delay="300">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-info-circle fs-4 me-3"></i>
+                            <div>
+                                <h5 class="mb-1">Request Pending</h5>
+                                <p class="mb-0">Your owner request is currently under review. We'll notify you once it's processed.</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <script>
+                    function previewImage(input, previewId) {
+                        const preview = document.getElementById(previewId);
+                        const image = preview.querySelector('img');
+                        
+                        if (input.files && input.files[0]) {
+                            const reader = new FileReader();
+                            
+                            reader.onload = function(e) {
+                                image.src = e.target.result;
+                                preview.classList.remove('d-none');
+                            }
+                            
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+
+                    // Add custom validation styles
+                    (function () {
+                        'use strict'
+
+                        const forms = document.querySelectorAll('.needs-validation')
+
+                        Array.from(forms).forEach(form => {
+                            form.addEventListener('submit', event => {
+                                if (!form.checkValidity()) {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                }
+
+                                form.classList.add('was-validated')
+                            }, false)
+                        })
+                    })()
+                </script>
+
+                <div class="mb-4">
             </div>
         </div>
     </div>

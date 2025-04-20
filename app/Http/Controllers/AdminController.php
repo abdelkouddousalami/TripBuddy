@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Trip;
 use App\Models\Comment;
+use App\Models\OwnerRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,8 +23,9 @@ class AdminController extends Controller
             'total_users' => User::count(),
             'total_trips' => Trip::count(),
             'total_comments' => Comment::count(),
-            'recent_users' => User::latest()->take(5)->get(),
-            'recent_trips' => Trip::with('user')->latest()->take(5)->get(),
+            'recent_users' => User::latest()->take(10)->get(),
+            'recent_trips' => Trip::with('user')->latest()->take(10)->get(),
+            'owner_requests' => OwnerRequest::with(['user', 'hotel'])->latest()->get(),
             'users_by_role' => User::select('role', DB::raw('count(*) as count'))
                                 ->groupBy('role')
                                 ->get(),
@@ -37,5 +39,19 @@ class AdminController extends Controller
         ];
 
         return view('admin.dashboard', compact('stats'));
+    }
+
+    public function updateRole(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'role' => 'required|in:tripper,admin,owner'
+        ]);
+
+        $user = User::findOrFail($validated['user_id']);
+        $user->role = $validated['role'];
+        $user->save();
+
+        return back()->with('success', 'User role updated successfully.');
     }
 }

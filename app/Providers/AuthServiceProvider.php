@@ -6,6 +6,8 @@ use App\Models\Trip;
 use App\Policies\TripPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Models\OwnerRequest;
+use App\Policies\OwnerRequestPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Trip::class => TripPolicy::class,
+        OwnerRequest::class => OwnerRequestPolicy::class,
     ];
 
     /**

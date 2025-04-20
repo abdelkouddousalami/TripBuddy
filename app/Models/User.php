@@ -76,4 +76,20 @@ class User extends Authenticatable
     {
         return $this->role === 'tripper';
     }
+
+    /**
+     * Check if user is owner
+     */
+    public function isOwner(): bool
+    {
+        return $this->role === 'owner';
+    }
+
+    /**
+     * Get the owner requests associated with the user.
+     */
+    public function ownerRequests(): HasMany
+    {
+        return $this->hasMany(OwnerRequest::class);
+    }
 }

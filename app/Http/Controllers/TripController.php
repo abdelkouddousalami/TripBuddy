@@ -6,6 +6,7 @@ use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class TripController extends Controller
 {
@@ -102,7 +103,7 @@ class TripController extends Controller
                     
                     $photos[$photo] = $path;
                 } catch (\Exception $e) {
-                    \Log::error('Image processing failed: ' . $e->getMessage());
+                    Log::error('Image processing failed: ' . $e->getMessage());
                     continue;
                 }
             }
@@ -199,7 +200,7 @@ class TripController extends Controller
                     
                     $photos[$photo] = $path;
                 } catch (\Exception $e) {
-                    \Log::error('Image processing failed: ' . $e->getMessage());
+                    Log::error('Image processing failed: ' . $e->getMessage());
                     continue;
                 }
             }
