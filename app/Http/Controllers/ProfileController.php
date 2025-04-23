@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Trip;
+use App\Models\Hotel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,8 +15,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $trips = Trip::where('user_id', $user->id)->latest()->get();
+        $localHotels = Hotel::where('city', $user->city)->latest()->take(3)->get();
         
-        return view('profile.show', compact('user', 'trips'));
+        return view('profile.show', compact('user', 'trips', 'localHotels'));
     }
 
     public function edit()

@@ -179,33 +179,39 @@
             color: var(--secondary-color);
         }
 
-        .btn {
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
+        /* Hotel Card Styles */
+        .hotel-card {
             border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
         }
 
-        .btn-primary:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(56, 102, 65, 0.2);
+        .hotel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .btn-outline-primary {
+        .hotel-image {
+            position: relative;
+        }
+
+        .hotel-card .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .hotel-card .card-title {
             color: var(--primary-color);
-            border-color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        .btn-outline-primary:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(56, 102, 65, 0.2);
+        .hotel-card .user-info {
+            color: #6c757d;
         }
 
         @media (max-width: 991.98px) {
@@ -445,38 +451,121 @@
                     @endif
                 </div>
 
-                @if($user->role === 'tripper' && !$user->ownerRequests()->where('status', 'pending')->exists())
-                    <div class="card mb-4 shadow-sm" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-header bg-primary text-white">
-                            <h4 class="mb-0"><i class="fas fa-hotel me-2"></i>Become an Owner</h4>
+                <!-- Local Hotels Section -->
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3" data-aos="fade-up" data-aos-delay="300">
+                        <h2>Places to Stay in {{ $user->city }}</h2>
+                        <a href="{{ route('hotels.index') }}" class="btn btn-primary">
+                            <i class="fas fa-hotel"></i> View All
+                        </a>
+                    </div>
+
+                    @if($localHotels->isEmpty())
+                        <div class="alert alert-info" data-aos="fade-up" data-aos-delay="400">
+                            No hotels or hostels are currently available in {{ $user->city }}.
                         </div>
-                        <div class="card-body">
-                            <div class="alert alert-info">
-                                <i class="fas fa-info-circle me-2"></i>
-                                Submit a request to become an owner and unlock additional features for managing your hotel or hostel.
+                    @else
+                        <div class="row g-4">
+                            @foreach($localHotels as $hotel)
+                                <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 + 400 }}">
+                                    <div class="card hotel-card">
+                                        <div class="hotel-image">
+                                            <img src="{{ Storage::url($hotel->photo1) }}" class="card-img-top" alt="{{ $hotel->name }}" style="height: 200px; object-fit: cover;">
+                                            <div class="position-absolute top-0 end-0 m-2">
+                                                <span class="badge bg-primary">{{ ucfirst($hotel->type) }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $hotel->name }}</h5>
+                                            <p class="text-muted small">
+                                                <i class="fas fa-map-marker-alt me-1"></i>
+                                                {{ $hotel->city }}
+                                            </p>
+                                            <p class="card-text small">{{ Str::limit($hotel->description, 100) }}</p>
+                                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                                <div class="user-info small">
+                                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($hotel->user->name) }}&background=random" 
+                                                         class="rounded-circle me-2" alt="{{ $hotel->user->name }}" width="24" height="24">
+                                                    {{ $hotel->user->name }}
+                                                </div>
+                                                <a href="{{ route('hotels.show', $hotel) }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+
+                @if($user->role === 'tripper' && !$user->ownerRequests()->where('status', 'pending')->exists())
+                    <div class="card shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-header bg-gradient text-white position-relative" 
+                             style="background: linear-gradient(45deg, var(--primary-color), var(--secondary-color))">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-hotel fs-3 me-3"></i>
+                                <div>
+                                    <h4 class="mb-1">Become a Property Owner</h4>
+                                    <p class="mb-0 opacity-75">List your hotel or hostel on TripBuddy</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="feature-icon bg-primary-subtle rounded-circle p-3 me-3">
+                                            <i class="fas fa-globe text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="mb-1">Global Reach</h5>
+                                            <p class="mb-0 text-muted small">Connect with travelers worldwide</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="feature-icon bg-primary-subtle rounded-circle p-3 me-3">
+                                            <i class="fas fa-chart-line text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="mb-1">Grow Your Business</h5>
+                                            <p class="mb-0 text-muted small">Increase your property's visibility</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <form action="{{ route('owner-requests.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                            <form action="{{ route('owner-requests.store') }}" method="POST" enctype="multipart/form-data" 
+                                  class="needs-validation" novalidate>
                                 @csrf
                                 
-                                <div class="mb-4">
-                                    <label for="reason" class="form-label fw-bold">Why do you want to be an owner?</label>
-                                    <textarea class="form-control @error('reason') is-invalid @enderror" 
-                                            id="reason" name="reason" rows="3" required
-                                            placeholder="Explain why you want to become an owner and your experience in property management..."></textarea>
-                                    @error('reason')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                <div class="card mb-4 border-0 bg-light rounded-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-4">
+                                            <i class="fas fa-info-circle me-2 text-primary"></i>Tell Us About Yourself
+                                        </h5>
+                                        <div class="mb-4">
+                                            <label for="reason" class="form-label">Why do you want to be an owner?</label>
+                                            <textarea class="form-control @error('reason') is-invalid @enderror" 
+                                                    id="reason" name="reason" rows="3" required
+                                                    placeholder="Tell us about your experience in property management and why you want to join TripBuddy..."></textarea>
+                                            <div class="form-text">Be specific about your experience and goals.</div>
+                                            @error('reason')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="card mb-4 bg-light">
-                                    <div class="card-header">
-                                        <h5 class="mb-0"><i class="fas fa-building me-2"></i>Property Information</h5>
-                                    </div>
+                                <div class="card mb-4 border-0 bg-light rounded-4">
                                     <div class="card-body">
+                                        <h5 class="card-title mb-4">
+                                            <i class="fas fa-building me-2 text-primary"></i>Property Details
+                                        </h5>
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <label for="hotel_name" class="form-label fw-bold">Property Name</label>
+                                                <label for="hotel_name" class="form-label">Property Name</label>
                                                 <input type="text" class="form-control @error('hotel_name') is-invalid @enderror" 
                                                        id="hotel_name" name="hotel_name" required
                                                        placeholder="Enter your property name">
@@ -486,7 +575,7 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label for="hotel_type" class="form-label fw-bold">Property Type</label>
+                                                <label for="hotel_type" class="form-label">Property Type</label>
                                                 <select class="form-select @error('hotel_type') is-invalid @enderror" 
                                                         id="hotel_type" name="hotel_type" required>
                                                     <option value="">Select type...</option>
@@ -499,7 +588,7 @@
                                             </div>
 
                                             <div class="col-12">
-                                                <label for="description" class="form-label fw-bold">Property Description</label>
+                                                <label for="description" class="form-label">Property Description</label>
                                                 <textarea class="form-control @error('description') is-invalid @enderror" 
                                                          id="description" name="description" rows="4" required
                                                          placeholder="Describe your property, its amenities, and what makes it unique..."></textarea>
@@ -509,7 +598,7 @@
                                             </div>
 
                                             <div class="col-md-8">
-                                                <label for="address" class="form-label fw-bold">Address</label>
+                                                <label for="address" class="form-label">Address</label>
                                                 <input type="text" class="form-control @error('address') is-invalid @enderror" 
                                                        id="address" name="address" required
                                                        placeholder="Full property address">
@@ -519,7 +608,7 @@
                                             </div>
 
                                             <div class="col-md-4">
-                                                <label for="city" class="form-label fw-bold">City</label>
+                                                <label for="city" class="form-label">City</label>
                                                 <input type="text" class="form-control @error('city') is-invalid @enderror" 
                                                        id="city" name="city" required
                                                        placeholder="City name">
@@ -531,21 +620,23 @@
                                     </div>
                                 </div>
 
-                                <div class="card mb-4 bg-light">
-                                    <div class="card-header">
-                                        <h5 class="mb-0"><i class="fas fa-images me-2"></i>Property Photos</h5>
-                                    </div>
+                                <div class="card mb-4 border-0 bg-light rounded-4">
                                     <div class="card-body">
-                                        <div class="row g-3">
-                                            <div class="col-md-12">
-                                                <label for="photo1" class="form-label fw-bold">
-                                                    Main Photo <span class="text-danger">*</span>
-                                                </label>
-                                                <input type="file" class="form-control @error('photo1') is-invalid @enderror" 
-                                                       id="photo1" name="photo1" accept="image/*" required
-                                                       onchange="previewImage(this, 'preview1')">
-                                                <div id="preview1" class="mt-2 d-none">
-                                                    <img src="" alt="Preview" class="img-thumbnail" style="max-height: 200px">
+                                        <h5 class="card-title mb-4">
+                                            <i class="fas fa-images me-2 text-primary"></i>Property Photos
+                                        </h5>
+                                        <div class="row g-4">
+                                            <div class="col-12">
+                                                <label class="form-label d-block">Main Photo <span class="text-danger">*</span></label>
+                                                <div class="d-flex gap-3 align-items-center">
+                                                    <div class="flex-grow-1">
+                                                        <input type="file" class="form-control @error('photo1') is-invalid @enderror" 
+                                                               id="photo1" name="photo1" accept="image/*" required
+                                                               onchange="previewImage(this, 'preview1')">
+                                                    </div>
+                                                    <div id="preview1" class="d-none">
+                                                        <img src="" alt="Preview" class="rounded" style="height: 60px; width: 60px; object-fit: cover;">
+                                                    </div>
                                                 </div>
                                                 @error('photo1')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -553,12 +644,16 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label for="photo2" class="form-label fw-bold">Additional Photo</label>
-                                                <input type="file" class="form-control @error('photo2') is-invalid @enderror" 
-                                                       id="photo2" name="photo2" accept="image/*"
-                                                       onchange="previewImage(this, 'preview2')">
-                                                <div id="preview2" class="mt-2 d-none">
-                                                    <img src="" alt="Preview" class="img-thumbnail" style="max-height: 200px">
+                                                <label class="form-label d-block">Additional Photo</label>
+                                                <div class="d-flex gap-3 align-items-center">
+                                                    <div class="flex-grow-1">
+                                                        <input type="file" class="form-control @error('photo2') is-invalid @enderror" 
+                                                               id="photo2" name="photo2" accept="image/*"
+                                                               onchange="previewImage(this, 'preview2')">
+                                                    </div>
+                                                    <div id="preview2" class="d-none">
+                                                        <img src="" alt="Preview" class="rounded" style="height: 60px; width: 60px; object-fit: cover;">
+                                                    </div>
                                                 </div>
                                                 @error('photo2')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -566,12 +661,16 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label for="photo3" class="form-label fw-bold">Additional Photo</label>
-                                                <input type="file" class="form-control @error('photo3') is-invalid @enderror" 
-                                                       id="photo3" name="photo3" accept="image/*"
-                                                       onchange="previewImage(this, 'preview3')">
-                                                <div id="preview3" class="mt-2 d-none">
-                                                    <img src="" alt="Preview" class="img-thumbnail" style="max-height: 200px">
+                                                <label class="form-label d-block">Additional Photo</label>
+                                                <div class="d-flex gap-3 align-items-center">
+                                                    <div class="flex-grow-1">
+                                                        <input type="file" class="form-control @error('photo3') is-invalid @enderror" 
+                                                               id="photo3" name="photo3" accept="image/*"
+                                                               onchange="previewImage(this, 'preview3')">
+                                                    </div>
+                                                    <div id="preview3" class="d-none">
+                                                        <img src="" alt="Preview" class="rounded" style="height: 60px; width: 60px; object-fit: cover;">
+                                                    </div>
                                                 </div>
                                                 @error('photo3')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -581,23 +680,27 @@
                                     </div>
                                 </div>
 
-                                <div class="card mb-4 bg-light">
-                                    <div class="card-header">
-                                        <h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Ownership Documentation</h5>
-                                    </div>
+                                <div class="card mb-4 border-0 bg-light rounded-4">
                                     <div class="card-body">
-                                        <div class="alert alert-warning">
-                                            <i class="fas fa-exclamation-triangle me-2"></i>
-                                            Please provide official documentation that proves your ownership of the property.
+                                        <h5 class="card-title mb-3">
+                                            <i class="fas fa-file-alt me-2 text-primary"></i>Verification Documents
+                                        </h5>
+                                        <div class="alert alert-light border mb-4">
+                                            <div class="d-flex">
+                                                <i class="fas fa-info-circle mt-1 me-3 text-primary"></i>
+                                                <div>
+                                                    <h6 class="mb-1">Document Requirements</h6>
+                                                    <p class="mb-0 small">Please provide official documentation proving your ownership of the property. This can be a property deed, business license, or other relevant legal documents.</p>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="proof_document" class="form-label fw-bold">
-                                                Proof of Ownership <span class="text-danger">*</span>
-                                            </label>
+                                            <label for="proof_document" class="form-label">Proof of Ownership <span class="text-danger">*</span></label>
                                             <input type="file" class="form-control @error('proof_document') is-invalid @enderror" 
                                                    id="proof_document" name="proof_document" 
                                                    accept=".pdf,.jpg,.jpeg,.png" required>
                                             <div class="form-text">
+                                                <i class="fas fa-file-alt me-1"></i>
                                                 Accepted formats: PDF, JPG, JPEG, PNG (Max size: 2MB)
                                             </div>
                                             @error('proof_document')
@@ -607,25 +710,64 @@
                                     </div>
                                 </div>
 
-                                <div class="text-end">
-                                    <button type="submit" class="btn btn-primary btn-lg">
-                                        <i class="fas fa-paper-plane me-2"></i> Submit Owner Request
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="form-text">
+                                        <i class="fas fa-lock me-1"></i>
+                                        Your information is secure and will be reviewed carefully
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg px-4">
+                                        <i class="fas fa-paper-plane me-2"></i>Submit Request
                                     </button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 @elseif($user->ownerRequests()->where('status', 'pending')->exists())
-                    <div class="alert alert-info" data-aos="fade-up" data-aos-delay="300">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-info-circle fs-4 me-3"></i>
-                            <div>
-                                <h5 class="mb-1">Request Pending</h5>
-                                <p class="mb-0">Your owner request is currently under review. We'll notify you once it's processed.</p>
+                    <div class="card bg-light border-0 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center">
+                                <div class="process-icon bg-warning-subtle rounded-circle p-3 me-4">
+                                    <i class="fas fa-clock fs-2 text-warning"></i>
+                                </div>
+                                <div>
+                                    <h4 class="mb-2">Request Under Review</h4>
+                                    <p class="mb-0 text-muted">Your owner request is currently being processed. We'll notify you once our team has reviewed your application.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endif
+
+                <style>
+                    .feature-icon {
+                        width: 48px;
+                        height: 48px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    
+                    .process-icon {
+                        width: 64px;
+                        height: 64px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .form-control:focus, .form-select:focus {
+                        border-color: var(--primary-color);
+                        box-shadow: 0 0 0 0.25rem rgba(56, 102, 65, 0.25);
+                    }
+
+                    .bg-warning-subtle {
+                        background-color: rgba(255, 193, 7, 0.1);
+                    }
+
+                    .rounded-4 {
+                        border-radius: 1rem;
+                    }
+                </style>
 
                 <script>
                     function previewImage(input, previewId) {
