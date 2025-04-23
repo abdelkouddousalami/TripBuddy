@@ -14,75 +14,187 @@
             --accent-color: #A7C957;
             --light-color: #F2E8CF;
             --dark-accent: #BC4749;
+            --transition: all 0.3s ease;
         }
 
-        /* Navbar Styles */
+        body {
+            background-color: #f8f9fa;
+            padding-top: 70px;
+        }
+
         .navbar {
-            height: 105px !important;
-            background: rgba(255, 255, 255, 0.95);
+            height: 70px !important;
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            padding: 1rem 0;
-        
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1030;
+            transition: var(--transition);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .navbar-brand img {
-            height: 80px;
-        }
-
-        .navbar.scrolled {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background: var(--light-color);
+            height: 45px;
+            transition: var(--transition);
         }
 
         .nav-link {
-            position: relative;
-            overflow: hidden;
             color: var(--primary-color) !important;
-            font-weight: 500;
-            margin: 0 0.5rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+            position: relative;
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: -100%;
-            width: 100%;
+            left: 50%;
+            width: 0;
             height: 2px;
             background: var(--dark-accent);
-            transition: 0.3s ease;
+            transition: var(--transition);
+            transform: translateX(-50%);
         }
 
         .nav-link:hover::after {
-            left: 0;
+            width: 100%;
         }
 
-        .auth-buttons .btn {
-            margin-left: 0.5rem;
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(56, 102, 65, 0.7), rgba(56, 102, 65, 0.7)), url("{{ asset('img/hero.jpg') }}") no-repeat center center;
-            background-size: cover;
-            color: var(--light-color);
+        .dropdown-item {
+            padding: 0.7rem 1.5rem;
+            transition: var(--transition);
         }
 
-        /* Button Styles */
+        .dropdown-item:hover {
+            background: rgba(56, 102, 65, 0.1);
+            color: var(--primary-color);
+        }
+
+        .profile-header {
+            background: linear-gradient(rgba(56, 102, 65, 0.9), rgba(56, 102, 65, 0.8)), url("{{ asset('img/hero.jpg') }}") center/cover;
+            padding: 4rem 0;
+            color: white;
+            margin-bottom: 3rem;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .profile-header h1 {
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .profile-header .lead {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .profile-stats {
+            margin-top: -60px;
+            margin-bottom: 3rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-box i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stat-box h3 {
+            color: var(--dark-accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .user-info h4 {
+            color: var (--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .user-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .user-info i {
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+
+        .trip-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .trip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .trip-image {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .trip-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .trip-card .card-title {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .trip-card p i {
+            width: 20px;
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
         .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            background: var(--primary-color);
+            border: none;
         }
 
         .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var (--secondary-color);
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 102, 65, 0.2);
         }
 
         .btn-outline-primary {
@@ -91,122 +203,83 @@
         }
 
         .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-        }
-
-        .btn-danger {
-            background-color: var(--dark-accent);
-            border-color: var(--dark-accent);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section.bg-light {
-            background-color: var(--light-color) !important;
-        }
-
-        .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
-            border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background-color: white;
-        }
-
-        .card-img-top {
-            height: 250px;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .card-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 1.5rem;
-        }
-
-        .card-text {
-            flex: 1;
-            margin-bottom: 1rem;
-        }
-
-        /* Section specific card styles */
-        #booking .card {
-            min-height: 400px;
-        }
-
-        #buddy .card, #destinations .card {
-            min-height: 450px;
-        }
-
-        /* Form styles in booking section */
-        #booking form {
-            margin-top: auto;
-        }
-
-        /* Make all buttons align at bottom */
-        .card .btn {
-            margin-top: auto;
-        }
-
-        /* Section padding consistency */
-        .section {
-            padding: 100px 0;
-        }
-
-        .row.g-4 {
-            --bs-gutter-y: 2rem;
-        }
-
-        /* Footer */
-        .footer {
             background: var(--primary-color);
-            color: var(--light-color);
-            padding: 60px 0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 102, 65, 0.2);
         }
 
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--secondary-color);
-            margin: 0 10px;
-            transition: 0.3s ease;
-            color: var(--light-color);
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                border-radius: 0 0 15px 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-link {
+                padding: 0.8rem 1.5rem;
+                border-radius: 8px;
+            }
+
+            .nav-link:hover {
+                background: rgba(56, 102, 65, 0.1);
+            }
         }
 
-        .social-icon:hover {
-            background: var(--dark-accent);
-            transform: translateY(-5px);
-            color: var(--light-color);
+        @media (max-width: 767.98px) {
+            .profile-header {
+                padding: 3rem 0;
+                text-align: center;
+            }
+
+            .stat-box {
+                margin-bottom: 1rem;
+            }
+
+            .user-info {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            body {
+                padding-top: 60px;
+            }
+
+            .navbar {
+                height: 60px !important;
+            }
+
+            .navbar-brand img {
+                height: 35px;
+            }
+
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+
+            .profile-stats {
+                margin-top: -40px;
+            }
+
+            .stat-box {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top" data-aos="fade-down">
         <div class="container">
-            <!-- Logo on the left -->
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('img/logo.png') }}" alt="TripBuddy Logo">
             </a>
             
-            <!-- Hamburger menu for mobile -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- Navigation items in the middle -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
@@ -220,7 +293,6 @@
                     </li>
                 </ul>
                 
-                <!-- Auth buttons on the right -->
                 <div class="auth-buttons">
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Sign In</a>
@@ -547,7 +619,6 @@
                         }
                     }
 
-                    // Add custom validation styles
                     (function () {
                         'use strict'
 

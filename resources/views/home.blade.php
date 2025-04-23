@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripBuddy - Find Your Travel Companion</title>
-    <!-- CSS Dependencies -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -17,7 +16,6 @@
             --dark-accent: #BC4749;
         }
 
-        /* Navbar Styles */
         .navbar {
             height: 90px !important;
             background: rgba(255, 255, 255, 0.95);
@@ -69,16 +67,113 @@
 
         /* Enhanced Navbar Styles */
         .navbar {
-            height: 80px !important;
+            height: 70px !important;
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            transition: all 0.4s ease;
-            padding: 0.5rem 0;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1030;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 9999;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            transition: var(--transition);
+        }
+
+        .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--dark-accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+
+        .dropdown-item {
+            padding: 0.7rem 1.5rem;
+            transition: var(--transition);
+        }
+
+        .dropdown-item:hover {
+            background: rgba(56, 102, 65, 0.1);
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                border-radius: 0 0 15px 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+            }
+
+            .nav-link {
+                padding: 0.8rem 1.5rem;
+                border-radius: 8px;
+            }
+
+            .nav-link:hover {
+                background: rgba(56, 102, 65, 0.1);
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+                padding: 1rem 0;
+            }
+
+            .auth-buttons .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .navbar {
+                height: 60px !important;
+            }
+
+            .navbar-brand img {
+                height: 35px;
+            }
+
+            .navbar-collapse {
+                top: 60px;
+                max-height: calc(100vh - 60px);
+            }
         }
 
         .navbar-brand {
@@ -592,7 +687,7 @@
             margin: 0 auto 1.5rem;
             color: white;
             font-size: 2rem;
-            box-shadow: var(--card-shadow);
+            box-shadow: var (--card-shadow);
         }
 
         /* Search Section */
@@ -658,7 +753,7 @@
             text-align: center;
             padding: 2rem;
             background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
+            backdrop-filter: var (--glass-blur);
             border: var(--glass-border);
             border-radius: 15px;
             transition: var(--smooth-transition);
@@ -1438,27 +1533,602 @@
             width: 100%;
             height: 100%;
         }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            z-index: 1030;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            padding: 0;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            transition: height 0.3s ease;
+        }
+
+        .nav-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 991.98px) {
+            .navbar {
+                padding: 0.5rem;
+            }
+
+            .navbar-collapse {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-in-out;
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .navbar-collapse.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .navbar-nav {
+                margin: 1rem 0;
+            }
+
+            .nav-item {
+                margin: 0.5rem 0;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem;
+                background: rgba(56, 102, 65, 0.05);
+                border-radius: 8px;
+                display: block;
+                text-align: left;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .auth-buttons .btn {
+                width: 100%;
+                margin: 0.25rem 0;
+            }
+
+            .navbar-toggler {
+                padding: 0.25rem;
+                border: none;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: none;
+                outline: none;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 575.98px) {
+            .navbar-brand img {
+                height: 40px;
+            }
+
+            .navbar-collapse {
+                top: 60px;
+                max-height: calc(100vh - 60px);
+            }
+
+            .nav-link {
+                font-size: 0.95rem;
+            }
+
+            .auth-buttons .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(56, 102, 65, 0.05);
+            transform: translateX(5px);
+        }
+
+        /* Base navbar fixes */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px !important;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1030;
+            padding: 0 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Container positioning */
+        .navbar .container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        /* Brand positioning */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation menu positioning */
+        .navbar-collapse {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            padding: 0;
+            gap: 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem !important;
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Auth buttons positioning */
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-left: auto;
+        }
+
+        .auth-buttons .btn {
+            padding: 0.5rem 1.25rem;
+            font-weight: 600;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        /* Mobile navigation fixes */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                height: calc(100vh - 70px);
+                overflow-y: auto;
+                display: none;
+            }
+
+            .navbar-collapse.show {
+                display: block;
+                animation: slideDown 0.3s ease-out forwards;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+                margin: 1rem 0;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem !important;
+                width: 100%;
+                background: rgba(56, 102, 65, 0.05);
+                border-radius: 8px;
+                justify-content: flex-start;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            .auth-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Small mobile adjustments */
+        @media (max-width: 575.98px) {
+            .navbar {
+                height: 60px !important;
+            }
+
+            .navbar .container {
+                padding: 0 1rem;
+            }
+
+            .navbar-brand img {
+                height: 35px;
+            }
+
+            .navbar-collapse {
+                top: 60px;
+                height: calc(100vh - 60px);
+            }
+
+            .navbar-toggler {
+                padding: 0.25rem;
+            }
+        }
+
+        /* Hero section margin adjustment */
+        .hero {
+            padding-top: 70px;
+        }
+
+        @media (max-width: 575.98px) {
+            .hero {
+                padding-top: 60px;
+            }
+        }
+
+        /* Final navbar positioning fixes */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px !important;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar > .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .navbar-nav {
+            flex: 1;
+            justify-content: center;
+            margin: 0 2rem;
+        }
+
+        .navbar-collapse {
+            display: flex;
+            flex-basis: auto;
+            flex-grow: 1;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-item {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem !important;
+            position: relative;
+        }
+
+        .auth-buttons {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                height: auto;
+                max-height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1rem;
+                overflow-y: auto;
+                display: none;
+            }
+
+            .navbar-collapse.show {
+                display: block;
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                margin: 0;
+                padding: 1rem 0;
+            }
+
+            .nav-item, .nav-link {
+                height: auto;
+                width: 100%;
+            }
+
+            .auth-buttons {
+                margin: 1rem 0 0 0;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .auth-buttons .btn {
+                width: 100%;
+            }
+        }
+
+        /* Fixed Navbar Core */
+        .navbar {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px !important;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0 !important;
+        }
+
+        .navbar .container {
+            max-width: 1320px;
+            height: 100%;
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+
+        /* Fixed Navigation */
+        .navbar-collapse {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin: 0 2rem;
+        }
+
+        .navbar-nav {
+            margin: 0 auto !important;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem !important;
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+
+        /* Fixed Auth Buttons */
+        .auth-buttons {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .auth-buttons .btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            font-weight: 600;
+            min-width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                margin: 0;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .navbar-collapse.show {
+                display: block;
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin: 0 0 1rem 0 !important;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem !important;
+                background: rgba(56, 102, 65, 0.05);
+                border-radius: 8px;
+            }
+
+            .auth-buttons {
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin: 0;
+            }
+
+            .auth-buttons .btn,
+            .auth-buttons .d-flex {
+                width: 100%;
+            }
+
+            .auth-buttons .d-flex {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Small Screen Adjustments */
+        @media (max-width: 575.98px) {
+            .navbar {
+                height: 60px !important;
+            }
+
+            .navbar-brand img {
+                height: 35px;
+            }
+
+            .navbar-collapse {
+                top: 60px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top" data-aos="fade-down">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <!-- Logo on the left -->
-            <a class="navbar-brand" href="#">
+            <!-- Brand -->
+            <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('img/logo.png') }}" alt="TripBuddy Logo">
             </a>
-            
-            <!-- Hamburger menu for mobile -->
+
+            <!-- Mobile toggle button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- Navigation items in the middle -->
+            <!-- Navigation content -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
+                <!-- Navigation links -->
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link active" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('trips.index') }}">Find Buddy</a>
@@ -1468,22 +2138,22 @@
                     </li>
                 </ul>
                 
-                <!-- Auth buttons on the right -->
+                <!-- Authentication buttons -->
                 <div class="auth-buttons">
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Sign In</a>
                         <a href="{{ route('register') }}" class="btn btn-primary">Sign Up</a>
                     @else
                         <div class="dropdown">
-                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown">
                                 {{ Auth::user()->name }}
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                            <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="{{ route('profile.show') }}">My Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ route('trips.create') }}">Post a Trip</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
-                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                    <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="dropdown-item">Logout</button>
                                     </form>
@@ -1496,8 +2166,162 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <style>
+        /* Core navbar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 1rem;
+        }
+
+        /* Brand styles */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin-right: 1rem;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+        }
+
+        /* Navigation menu */
+        .navbar-collapse {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .nav-item {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0 0.5rem;
+        }
+
+        .nav-link {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        /* Auth buttons */
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+        }
+
+        .auth-buttons .btn {
+            padding: 0.5rem 1.25rem;
+            font-weight: 600;
+            border-radius: 25px;
+        }
+
+        /* Mobile navigation */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                height: auto;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1rem;
+                display: none;
+                overflow-y: auto;
+                max-height: calc(100vh - 70px);
+            }
+
+            .navbar-collapse.show {
+                display: block;
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                height: auto;
+                width: 100%;
+                gap: 0.5rem;
+            }
+
+            .nav-item {
+                width: 100%;
+                height: auto;
+                margin: 0;
+            }
+
+            .nav-link {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                justify-content: center;
+                background: rgba(56, 102, 65, 0.05);
+                border-radius: 8px;
+            }
+
+            .auth-buttons {
+                margin: 1rem 0 0 0;
+                width: 100%;
+            }
+
+            .auth-buttons .d-flex {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .auth-buttons .btn {
+                width: 100%;
+                margin: 0.25rem 0;
+            }
+        }
+
+        /* Small screens */
+        @media (max-width: 575.98px) {
+            .navbar {
+                height: 60px;
+            }
+
+            .navbar-brand img {
+                height: 35px;
+            }
+
+            .navbar-collapse {
+                top: 60px;
+                max-height: calc(100vh - 60px);
+            }
+        }
+    </style>
+
+    <!-- Add margin-top to hero section to account for fixed navbar -->
+    <section id="home" class="hero" style="margin-top: 70px;">
         <div class="container position-relative">
             <div class="row align-items-center min-vh-100">
                 <div class="col-lg-8" data-aos="fade-right">
@@ -1535,7 +2359,7 @@
                     </div>
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="hero-stat-item">
-                            <div class="hero-stat-number">150+</div>
+                            <div class="hero-stat-number">150+</</div>
                             <div class="hero-stat-label">Destinations</div>
                         </div>
                     </div>
@@ -1725,13 +2549,83 @@
             once: true
         });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                document.querySelector('.navbar').classList.add('scrolled');
-            } else {
-                document.querySelector('.navbar').classList.remove('scrolled');
-            }
+        // Enhanced Navbar functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('.navbar');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            let isMenuOpen = false;
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Toggle menu with animation
+            navbarToggler.addEventListener('click', function() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    navbarCollapse.style.display = 'block';
+                    // Trigger reflow
+                    navbarCollapse.offsetHeight;
+                    navbarCollapse.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    navbarCollapse.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                    // Wait for transition to finish before hiding
+                    setTimeout(() => {
+                        if (!isMenuOpen) {
+                            navbarCollapse.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navbar.contains(e.target) && isMenuOpen) {
+                    navbarToggler.click();
+                }
+            });
+
+            // Close mobile menu when clicking nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992 && isMenuOpen) {
+                        navbarToggler.click();
+                    }
+                });
+            });
+
+            // Reset menu state on resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 992) {
+                    navbarCollapse.style.display = '';
+                    navbarCollapse.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                    isMenuOpen = false;
+                }
+            });
+
+            // Handle dropdown menus on mobile
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                toggle.addEventListener('click', (e) => {
+                    if (window.innerWidth < 992) {
+                        e.preventDefault();
+                        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
         });
     </script>
 </body>

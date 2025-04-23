@@ -33,14 +33,12 @@ class Trip extends Model
         parent::boot();
         
         static::deleting(function ($trip) {
-            // Delete associated photos when a trip is deleted
             foreach (['photo1', 'photo2', 'photo3'] as $photo) {
                 if ($trip->$photo) {
                     Storage::disk('public')->delete($trip->$photo);
                 }
             }
 
-            // Delete associated comments (this is a backup, as we have onDelete('cascade') in migration)
             $trip->comments()->delete();
         });
     }

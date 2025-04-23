@@ -112,7 +112,7 @@
             width: 55%;
             padding: 3rem;
             position: relative;
-            overflow: hidden;
+            overflow: visible; /* Changed from hidden to visible */
         }
 
         .forms-container {
@@ -122,17 +122,29 @@
         }
 
         .auth-form {
-            position: absolute;
+            position: relative; /* Changed from absolute to relative */
             width: 100%;
             opacity: 1;
             transition: all 0.5s ease;
             transform: translateX(0);
+            display: block; /* Added display block */
         }
 
         .auth-form.register-form {
+            display: none; /* Changed from opacity and transform to display none */
+        }
+
+        /* Form switching animation */
+        .auth-form.fade-out {
             opacity: 0;
-            transform: translateX(100%);
+            transform: translateX(-100%);
             pointer-events: none;
+        }
+
+        .auth-form.fade-in {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
         }
 
         .form-switch {
@@ -213,18 +225,79 @@
             .auth-container {
                 flex-direction: column;
                 min-height: auto;
+                margin: 1rem;
+                border-radius: 10px;
             }
 
             .brand-section, .forms-section {
                 width: 100%;
-            }
-
-            .brand-section {
-                padding: 2rem;
+                padding: 2rem 1rem;
             }
 
             .brand-section img {
                 max-width: 150px;
+                margin-bottom: 1rem;
+            }
+
+            .brand-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .brand-section p {
+                font-size: 1rem;
+            }
+
+            .auth-form h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .form-control {
+                font-size: 0.9rem;
+                padding: 0.7rem 1rem;
+            }
+
+            .btn-primary {
+                font-size: 0.9rem;
+                padding: 0.7rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-container {
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+
+            .brand-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .forms-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .form-control {
+                font-size: 0.85rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .btn-primary {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .navbar-brand img {
+                height: 30px;
             }
         }
     </style>
@@ -395,30 +468,37 @@
             const loginForm = document.querySelector('.login-form');
             const registerForm = document.querySelector('.register-form');
             
-            if (loginForm.style.opacity !== '0') {
+            if (loginForm.style.display !== 'none') {
                 // Switch to Register
-                loginForm.style.opacity = '0';
-                loginForm.style.transform = 'translateX(-100%)';
-                loginForm.style.pointerEvents = 'none';
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
                 
+                // Add animation classes
+                registerForm.classList.add('fade-in');
                 setTimeout(() => {
-                    registerForm.style.opacity = '1';
-                    registerForm.style.transform = 'translateX(0)';
-                    registerForm.style.pointerEvents = 'all';
-                }, 300);
+                    registerForm.classList.remove('fade-in');
+                }, 500);
             } else {
                 // Switch to Login
-                registerForm.style.opacity = '0';
-                registerForm.style.transform = 'translateX(100%)';
-                registerForm.style.pointerEvents = 'none';
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
                 
+                // Add animation classes
+                loginForm.classList.add('fade-in');
                 setTimeout(() => {
-                    loginForm.style.opacity = '1';
-                    loginForm.style.transform = 'translateX(0)';
-                    loginForm.style.pointerEvents = 'all';
-                }, 300);
+                    loginForm.classList.remove('fade-in');
+                }, 500);
             }
         }
+
+        // Make sure login form is visible by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.querySelector('.login-form');
+            const registerForm = document.querySelector('.register-form');
+            
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        });
 
         function togglePassword(button) {
             const input = button.parentElement.querySelector('input');

@@ -60,7 +60,6 @@ class OwnerRequestController extends Controller
         $ownerRequest->status = 'approved';
         $ownerRequest->save();
 
-        // Update user role to owner
         $ownerRequest->user->role = 'owner';
         $ownerRequest->user->save();
 
@@ -72,7 +71,6 @@ class OwnerRequestController extends Controller
         $ownerRequest->status = 'rejected';
         $ownerRequest->save();
 
-        // Delete the associated hotel and its files
         $hotel = $ownerRequest->hotel;
         if ($hotel) {
             Storage::disk('public')->delete($hotel->photo1);

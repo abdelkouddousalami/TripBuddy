@@ -23,15 +23,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            
-            // Redirect based on user role
-            if (Auth::user()->role === 'admin') {
+            if(Auth::user()->role === 'admin'){
                 return redirect()->route('admin.dashboard');
-            } else {
+            }else{
                 return redirect()->route('profile.show');
             }
         }
-
+            
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
@@ -56,7 +54,7 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
             'city' => $validated['city'],
-            'role' => 'tripper', // Set default role
+            'role' => 'tripper',
         ]);
 
         Auth::login($user);
