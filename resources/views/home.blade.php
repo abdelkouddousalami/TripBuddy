@@ -65,7 +65,6 @@
             margin-left: 0.5rem;
         }
 
-        /* Enhanced Navbar Styles */
         .navbar {
             height: 70px !important;
             background: rgba(255, 255, 255, 0.98);
@@ -228,7 +227,6 @@
             width: 50%;
         }
 
-        /* Enhanced Auth Buttons */
         .auth-buttons {
             display: flex;
             gap: 1rem;
@@ -269,7 +267,6 @@
             box-shadow: 0 8px 20px rgba(56, 102, 65, 0.3);
         }
 
-        /* Enhanced Dropdown Styles */
         .dropdown-menu {
             border: none;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -292,7 +289,6 @@
             transform: translateX(5px);
         }
 
-        /* Responsive Navbar Styles */
         @media (max-width: 991.98px) {
             .navbar-collapse {
                 background: rgba(255, 255, 255, 0.98);
@@ -341,7 +337,6 @@
             }
         }
 
-        /* Hamburger Menu Enhancement */
         .navbar-toggler {
             border: none;
             padding: 0.5rem;
@@ -359,7 +354,6 @@
             height: 1.5em;
         }
 
-        /* Hero Section Enhanced Styles */
         .hero {
             min-height: 100vh;
             background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(74, 120, 86, 0.7)), url("{{ asset('img/hero.jpg') }}") no-repeat center center;
@@ -493,7 +487,6 @@
             font-weight: 500;
         }
 
-        /* Button Styles */
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
@@ -519,7 +512,6 @@
             border-color: var(--dark-accent);
         }
 
-        /* Section Styles */
         .section {
             padding: 100px 0;
         }
@@ -556,7 +548,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Section specific card styles */
         #booking .card {
             min-height: 400px;
         }
@@ -565,17 +556,14 @@
             min-height: 450px;
         }
 
-        /* Form styles in booking section */
         #booking form {
             margin-top: auto;
         }
 
-        /* Make all buttons align at bottom */
         .card .btn {
             margin-top: auto;
         }
 
-        /* Section padding consistency */
         .section {
             padding: 100px 0;
         }
@@ -584,7 +572,6 @@
             --bs-gutter-y: 2rem;
         }
 
-        /* Footer */
         .footer {
             background: var(--primary-color);
             color: var(--light-color);
@@ -610,7 +597,6 @@
             color: var(--light-color);
         }
 
-        /* Featured Destinations */
         .destinations-section {
             background: var(--light-color);
             padding: 6rem 0;
@@ -655,7 +641,6 @@
             background: rgba(255, 255, 255, 0.9);
         }
 
-        /* How It Works Section */
         .how-it-works {
             background: white;
             padding: 6rem 0;
@@ -690,7 +675,6 @@
             box-shadow: var (--card-shadow);
         }
 
-        /* Search Section */
         .search-section {
             background: var(--nature-gradient);
             padding: 4rem 0;
@@ -720,7 +704,6 @@
             z-index: 1;
         }
 
-        /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -743,7 +726,6 @@
             }
         }
 
-        /* Stats Section */
         .stats-section {
             background: white;
             padding: 4rem 0;
@@ -777,7 +759,6 @@
             font-weight: 500;
         }
 
-        /* Global Variables */
         :root {
             --section-spacing: 8rem;
             --section-padding: 6rem;
@@ -794,7 +775,6 @@
             --z-index-modal: 1050;
         }
 
-        /* Enhanced Section Spacing */
         .section {
             padding: var(--section-spacing) 0;
             position: relative;
@@ -812,7 +792,6 @@
             pointer-events: none;
         }
 
-        /* Enhanced Card Styles */
         .card {
             border: none;
             border-radius: var(--border-radius);
@@ -839,7 +818,6 @@
             transform: scale(1.05);
         }
 
-        /* Enhanced Section Titles */
         .section-title {
             margin-bottom: 4rem;
             position: relative;
@@ -858,13 +836,11 @@
             border-radius: 3px;
         }
 
-        /* Enhanced Grid Spacing */
         .row {
             --bs-gutter-x: var(--card-spacing);
             --bs-gutter-y: var(--card-spacing);
         }
 
-        /* Enhanced Button Styles */
         .btn {
             padding: 0.8rem 2rem;
             border-radius: 50px;
@@ -893,7 +869,6 @@
             height: 300px;
         }
 
-        /* Enhanced Form Controls */
         .form-control {
             border-radius: 10px;
             padding: 1rem;
@@ -907,7 +882,6 @@
             border-color: var(--secondary-color);
         }
 
-        /* Enhanced Stats Design */
         .hero-stats {
             bottom: 200px;
         }
@@ -927,7 +901,6 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
-        /* Enhanced Footer Design */
         .footer {
             position: relative;
             overflow: hidden;
@@ -955,7 +928,6 @@
             transform: var(--hover-lift) scale(1.1);
         }
 
-        /* Enhanced Animations */
         [data-aos] {
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -964,13 +936,11 @@
             transition-delay: calc(var(--delay, 0) * 100ms);
         }
 
-        /* Fixed Positioning Issues */
         body {
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Enhanced Section Layout */
         .section {
             position: relative;
             padding: var(--section-padding) 0;
@@ -984,10 +954,9 @@
             z-index: calc(var(--z-index-base) + 2);
         }
 
-        /* Fixed Hero Section */
         .hero {
             position: relative;
-            margin-top: -105px; /* Adjust for navbar height */
+            margin-top: -105px; 
             padding-top: 105px;
             min-height: 100vh;
             z-index: var(--z-index-base);
@@ -1009,7 +978,6 @@
             z-index: calc(var(--z-index-base) + 2);
         }
 
-        /* Fixed Card Layouts */
         .card {
             position: relative;
             height: 100%;
@@ -1025,7 +993,6 @@
             flex-direction: column;
         }
 
-        /* Fixed Booking Section */
         #booking {
             position: relative;
             z-index: calc(var(--z-index-base) + 1);
@@ -1038,7 +1005,6 @@
             min-height: 450px;
         }
 
-        /* Fixed Buddy Section */
         #buddy {
             position: relative;
             z-index: calc(var(--z-index-base) + 1);
@@ -1052,7 +1018,6 @@
             min-height: 500px;
         }
 
-        /* Fixed Destinations Section */
         #destinations {
             position: relative;
             z-index: calc(var(--z-index-base) + 1);
@@ -1065,7 +1030,6 @@
             min-height: 450px;
         }
 
-        /* Enhanced Grid System */
         .row {
             --bs-gutter-x: 2rem;
             --bs-gutter-y: 2rem;
@@ -1079,7 +1043,6 @@
             margin-top: var(--bs-gutter-y);
         }
 
-        /* Fixed Navbar */
         .navbar {
             position: relative;
             z-index: var(--z-index-header);
@@ -1089,28 +1052,24 @@
             z-index: calc(var(--z-index-header) + 1);
         }
 
-        /* Enhanced Card Images */
         .card-img-top {
             height: 250px;
             object-fit: cover;
             width: 100%;
         }
 
-        /* Enhanced Button Positioning */
         .card .btn {
             margin-top: auto;
             position: relative;
             z-index: calc(var(--z-index-base) + 2);
         }
 
-        /* Fixed Footer */
         .footer {
             position: relative;
             z-index: calc(var(--z-index-base) + 1);
             padding: 6rem 0 3rem;
         }
 
-        /* Media Queries for Responsive Layout */
         @media (max-width: 991.98px) {
             .hero-content {
                 padding: 3rem 1rem;
@@ -1151,7 +1110,6 @@
             }
         }
 
-        /* Enhanced Mobile Navbar Styles */
         @media (max-width: 991.98px) {
             .navbar {
                 height: 70px !important;
@@ -1267,7 +1225,6 @@
             }
         }
 
-        /* Enhanced Mobile and Responsive Styles */
         @media (max-width: 991.98px) {
             .navbar {
                 height: 60px !important;
@@ -1335,7 +1292,6 @@
                 padding: 0.75rem;
             }
 
-            /* Hero Section Mobile Adjustments */
             .hero {
                 min-height: calc(100vh - 60px);
                 margin-top: 60px;
@@ -1379,7 +1335,6 @@
                 margin-bottom: 1rem;
             }
 
-            /* Section Adjustments */
             .section {
                 padding: 3rem 0;
             }
@@ -1398,7 +1353,6 @@
             }
         }
 
-        /* Small Mobile Devices */
         @media (max-width: 575.98px) {
             .navbar-brand img {
                 height: 35px;
@@ -1439,7 +1393,6 @@
             }
         }
 
-        /* General Responsive Improvements */
         .container {
             padding-left: 1rem;
             padding-right: 1rem;
@@ -1463,7 +1416,6 @@
             padding-right: 0.75rem;
         }
 
-        /* Card Grid System */
         .card {
             height: 100%;
             display: flex;
@@ -1486,26 +1438,22 @@
             align-self: stretch;
         }
 
-        /* Navigation Enhancements */
         .nav-link {
             white-space: nowrap;
             transition: all 0.3s ease;
         }
 
-        /* Form Responsiveness */
         .form-control {
             font-size: 1rem;
             padding: 0.75rem 1rem;
         }
 
-        /* Button Responsiveness */
         .btn {
             padding: 0.75rem 1.5rem;
             font-size: 1rem;
             white-space: nowrap;
         }
 
-        /* Footer Responsive Design */
         .footer {
             padding: 3rem 0 2rem;
         }
@@ -1520,7 +1468,6 @@
             }
         }
 
-        /* Enhanced Utility Classes */
         .text-truncate-2 {
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -1534,7 +1481,6 @@
             height: 100%;
         }
 
-        /* Navbar Styles */
         .navbar {
             position: fixed;
             width: 100%;
@@ -1576,7 +1522,6 @@
             align-items: center;
         }
 
-        /* Mobile Navigation */
         @media (max-width: 991.98px) {
             .navbar {
                 padding: 0.5rem;
@@ -1648,7 +1593,6 @@
             }
         }
 
-        /* Small Mobile Devices */
         @media (max-width: 575.98px) {
             .navbar-brand img {
                 height: 40px;
@@ -1669,7 +1613,6 @@
             }
         }
 
-        /* Dropdown Menu */
         .dropdown-menu {
             border: none;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -1688,7 +1631,6 @@
             transform: translateX(5px);
         }
 
-        /* Base navbar fixes */
         .navbar {
             position: fixed;
             top: 0;
@@ -1702,7 +1644,6 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Container positioning */
         .navbar .container {
             height: 100%;
             display: flex;
@@ -1727,7 +1668,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Navigation menu positioning */
         .navbar-collapse {
             flex-grow: 1;
             display: flex;
@@ -1757,7 +1697,6 @@
             align-items: center;
         }
 
-        /* Auth buttons positioning */
         .auth-buttons {
             display: flex;
             align-items: center;
@@ -1839,7 +1778,6 @@
             }
         }
 
-        /* Small mobile adjustments */
         @media (max-width: 575.98px) {
             .navbar {
                 height: 60px !important;
@@ -1863,7 +1801,6 @@
             }
         }
 
-        /* Hero section margin adjustment */
         .hero {
             padding-top: 70px;
         }
@@ -1874,7 +1811,6 @@
             }
         }
 
-        /* Final navbar positioning fixes */
         .navbar {
             position: fixed;
             top: 0;
@@ -1972,7 +1908,6 @@
             }
         }
 
-        /* Fixed Navbar Core */
         .navbar {
             position: fixed !important;
             top: 0;
@@ -1995,7 +1930,6 @@
             padding: 0 1rem;
         }
 
-        /* Fixed Navigation */
         .navbar-collapse {
             flex: 1;
             display: flex;
@@ -2021,7 +1955,6 @@
             color: var(--primary-color) !important;
         }
 
-        /* Fixed Auth Buttons */
         .auth-buttons {
             margin-left: auto;
             display: flex;
@@ -2039,7 +1972,6 @@
             justify-content: center;
         }
 
-        /* Mobile Adjustments */
         @media (max-width: 991.98px) {
             .navbar-collapse {
                 position: fixed;
@@ -2094,7 +2026,6 @@
             }
         }
 
-        /* Small Screen Adjustments */
         @media (max-width: 575.98px) {
             .navbar {
                 height: 60px !important;
@@ -2113,19 +2044,15 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <!-- Brand -->
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ asset('img/logo.png') }}" alt="TripBuddy Logo">
             </a>
 
-            <!-- Mobile toggle button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- Navigation content -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- Navigation links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('home') }}">Home</a>
@@ -2138,7 +2065,6 @@
                     </li>
                 </ul>
                 
-                <!-- Authentication buttons -->
                 <div class="auth-buttons">
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Sign In</a>
@@ -2167,7 +2093,6 @@
     </nav>
 
     <style>
-        /* Core navbar styles */
         .navbar {
             position: fixed;
             top: 0;
@@ -2189,7 +2114,6 @@
             padding: 0 1rem;
         }
 
-        /* Brand styles */
         .navbar-brand {
             display: flex;
             align-items: center;
@@ -2202,7 +2126,6 @@
             width: auto;
         }
 
-        /* Navigation menu */
         .navbar-collapse {
             display: flex;
             align-items: center;
@@ -2234,7 +2157,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Auth buttons */
         .auth-buttons {
             display: flex;
             align-items: center;
@@ -2247,7 +2169,6 @@
             border-radius: 25px;
         }
 
-        /* Mobile navigation */
         @media (max-width: 991.98px) {
             .navbar-collapse {
                 position: fixed;
@@ -2303,7 +2224,6 @@
             }
         }
 
-        /* Small screens */
         @media (max-width: 575.98px) {
             .navbar {
                 height: 60px;
@@ -2320,7 +2240,6 @@
         }
     </style>
 
-    <!-- Add margin-top to hero section to account for fixed navbar -->
     <section id="home" class="hero" style="margin-top: 70px;">
         <div class="container position-relative">
             <div class="row align-items-center min-vh-100">
@@ -2374,7 +2293,6 @@
         </div>
     </section>
 
-    <!-- Booking Section -->
     <section id="booking" class="section bg-light">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Find Your Perfect Stay</h2>
@@ -2427,7 +2345,6 @@
         </div>
     </section>
 
-    <!-- Find Buddy Section -->
     <section id="buddy" class="section">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Find Your Travel Buddy</h2>
@@ -2466,7 +2383,6 @@
         </div>
     </section>
 
-    <!-- Destinations Section -->
     <section id="destinations" class="section bg-light">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Popular Destinations</h2>
@@ -2505,7 +2421,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -2539,17 +2454,14 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true
         });
 
-        // Enhanced Navbar functionality
         document.addEventListener('DOMContentLoaded', function() {
             const navbar = document.querySelector('.navbar');
             const navbarCollapse = document.querySelector('.navbar-collapse');
@@ -2557,7 +2469,6 @@
             const navbarToggler = document.querySelector('.navbar-toggler');
             let isMenuOpen = false;
 
-            // Navbar scroll effect
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
@@ -2566,19 +2477,16 @@
                 }
             });
 
-            // Toggle menu with animation
             navbarToggler.addEventListener('click', function() {
                 isMenuOpen = !isMenuOpen;
                 if (isMenuOpen) {
                     navbarCollapse.style.display = 'block';
-                    // Trigger reflow
                     navbarCollapse.offsetHeight;
                     navbarCollapse.classList.add('show');
                     document.body.style.overflow = 'hidden';
                 } else {
                     navbarCollapse.classList.remove('show');
                     document.body.style.overflow = 'auto';
-                    // Wait for transition to finish before hiding
                     setTimeout(() => {
                         if (!isMenuOpen) {
                             navbarCollapse.style.display = 'none';
@@ -2587,14 +2495,12 @@
                 }
             });
 
-            // Close mobile menu when clicking outside
             document.addEventListener('click', function(e) {
                 if (!navbar.contains(e.target) && isMenuOpen) {
                     navbarToggler.click();
                 }
             });
 
-            // Close mobile menu when clicking nav links
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (window.innerWidth < 992 && isMenuOpen) {
@@ -2603,7 +2509,6 @@
                 });
             });
 
-            // Reset menu state on resize
             window.addEventListener('resize', function() {
                 if (window.innerWidth >= 992) {
                     navbarCollapse.style.display = '';
@@ -2613,7 +2518,6 @@
                 }
             });
 
-            // Handle dropdown menus on mobile
             const dropdowns = document.querySelectorAll('.dropdown');
             dropdowns.forEach(dropdown => {
                 const toggle = dropdown.querySelector('.dropdown-toggle');
