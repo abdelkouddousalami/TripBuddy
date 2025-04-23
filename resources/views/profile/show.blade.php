@@ -364,8 +364,33 @@
                                 </a>
                             </div>
                         </div>
+                        @if($user->role === 'owner')
+                        <div class="col">
+                            <div class="stat-box">
+                                <i class="fas fa-hotel"></i>
+                                <a href="{{ route('hotels.owner-dashboard') }}" class="btn btn-primary">
+                                    Hotel Dashboard
+                                </a>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
+
+                @if($user->role === 'owner')
+                <div class="alert alert-success mb-4" data-aos="fade-up">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-crown fs-4 me-3"></i>
+                        <div>
+                            <h5 class="mb-1">Hotel Owner Status</h5>
+                            <p class="mb-0">You are a verified hotel owner. Access your hotel dashboard to manage your properties.</p>
+                        </div>
+                        <a href="{{ route('hotels.owner-dashboard') }}" class="btn btn-outline-success ms-auto">
+                            Go to Dashboard <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                @endif
 
                 <div class="user-info mb-4" data-aos="fade-up" data-aos-delay="200">
                     <h4>About Me</h4>

@@ -6,6 +6,7 @@
     <title>Find Travel Buddies - TripBuddy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
         :root {
             --primary-color: #386641;
@@ -13,270 +14,252 @@
             --accent-color: #A7C957;
             --light-color: #F2E8CF;
             --dark-accent: #BC4749;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --hover-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            --transition: all 0.3s ease;
+            --border-radius: 20px;
+            --card-padding: 1.5rem;
+            --glass-bg: rgba(255, 255, 255, 0.95);
         }
 
-        /* Navbar Styles */
+        body {
+            background-color: #f8f9fa;
+            padding-top: 70px;
+        }
+
+        /* Navbar styles */
         .navbar {
-            height: 105px !important;
-            background: rgba(255, 255, 255, 0.95);
+            height: 70px !important;
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            padding: 1rem 0;
-    
-            top: 0;
-            left: 0;
-            right: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1030;
         }
 
-        .navbar-brand img {
-            height: 80px;
+        /* Search Section */
+        .search-section {
+            background: linear-gradient(rgba(56, 102, 65, 0.9), rgba(56, 102, 65, 0.8)), 
+                        url("{{ asset('img/hero.jpg') }}") center/cover no-repeat fixed;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            color: white;
+            border-radius: 0 0 30px 30px;
         }
 
-        .navbar.scrolled {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background: var(--light-color);
+        .search-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .nav-link {
-            position: relative;
-            overflow: hidden;
-            color: var(--primary-color) !important;
-            font-weight: 500;
-            margin: 0 0.5rem;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: var(--dark-accent);
-            transition: 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            left: 0;
-        }
-
-        .auth-buttons .btn {
-            margin-left: 0.5rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(56, 102, 65, 0.7), rgba(56, 102, 65, 0.7)), url("{{ asset('img/hero.jpg') }}") no-repeat center center;
-            background-size: cover;
-            color: var(--light-color);
-        }
-
-        /* Button Styles */
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var (--secondary-color);
-        }
-
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-        }
-
-        .btn-danger {
-            background-color: var(--dark-accent);
-            border-color: var(--dark-accent);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section.bg-light {
-            background-color: var(--light-color) !important;
-        }
-
-        .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
+        .search-box .form-control {
+            background: rgba(255, 255, 255, 0.9);
             border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background-color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-size: 1rem;
         }
 
-        .card-img-top {
-            height: 250px;
-            object-fit: cover;
-            object-position: center;
+        .search-box .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
         }
 
-        .card-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 1.5rem;
-        }
-
-        .card-text {
-            flex: 1;
-            margin-bottom: 1rem;
-        }
-
-        /* Section specific card styles */
-        #booking .card {
-            min-height: 400px;
-        }
-
-        #buddy .card, #destinations .card {
-            min-height: 450px;
-        }
-
-        /* Form styles in booking section */
-        #booking form {
-            margin-top: auto;
-        }
-
-        /* Make all buttons align at bottom */
-        .card .btn {
-            margin-top: auto;
-        }
-
-        /* Section padding consistency */
-        .section {
-            padding: 100px 0;
-        }
-
-        .row.g-4 {
-            --bs-gutter-y: 2rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--primary-color);
-            color: var(--light-color);
-            padding: 60px 0;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--secondary-color);
-            margin: 0 10px;
-            transition: 0.3s ease;
-            color: var(--light-color);
-        }
-
-        .social-icon:hover {
-            background: var(--dark-accent);
-            transform: translateY(-5px);
-            color: var(--light-color);
+        /* Trips Grid */
+        .trips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
         }
 
         .trip-card {
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background: white;
-            transition: transform 0.3s ease;
+            background: var(--glass-bg);
+            border: none;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
             height: 100%;
-            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .trip-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--hover-shadow);
         }
 
-        .trip-card .carousel {
-            border-radius: 12px 12px 0 0;
-            overflow: hidden;
-        }
-
-        .trip-card .carousel-item img,
-        .trip-card .trip-image {
-            width: 100%;
-            height: 300px;
+        .trip-image {
+            height: 200px;
             object-fit: cover;
+            width: 100%;
         }
 
         .trip-card .card-body {
-            padding: 1.5rem;
+            padding: var(--card-padding);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .author-info {
-            display: flex;
-            align-items: center;
+        .trip-title {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
-        .author-avatar {
+        .trip-meta {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            color: #666;
+        }
+
+        .trip-meta li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .trip-meta i {
+            width: 20px;
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        .trip-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .trip-footer .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
             width: 40px;
             height: 40px;
-            background: var(--primary-color);
-            color: white;
             border-radius: 50%;
+            margin-right: 0.8rem;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 102, 65, 0.2);
+        }
+
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .filter-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .filter-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Pagination */
+        .pagination {
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .page-link {
+            color: var(--primary-color);
+            border: none;
+            margin: 0 0.3rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            margin-right: 1rem;
         }
 
-        .city-badge {
-            display: inline-block;
-            background: rgba(167, 201, 87, 0.1);
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .page-link:hover {
+            background-color: var(--light-color);
             color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            transform: translateY(-2px);
         }
 
-        .trip-stats {
-            display: flex;
-            justify-content: space-between;
-            margin: 1rem 0;
-            color: var(--secondary-color);
-            font-size: 0.9rem;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .search-section {
+                padding: 2rem 0;
+            }
+
+            .trips-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0.5rem;
+            }
+
+            .trip-card {
+                margin-bottom: 1rem;
+            }
         }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 10%;
-            background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+        @media (max-width: 576px) {
+            .search-box {
+                padding: 1rem;
+            }
 
-        .carousel-control-next {
-            background: linear-gradient(-90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
-        }
+            .trip-meta {
+                font-size: 0.9rem;
+            }
 
-        .carousel:hover .carousel-control-prev,
-        .carousel:hover .carousel-control-next {
-            opacity: 1;
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top" data-aos="fade-down">
         <div class="container">
             <!-- Logo on the left -->
@@ -331,130 +314,133 @@
         </div>
     </nav>
 
-    <!-- Search Section -->
     <section class="search-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <h1 class="display-4 mb-4">Find Your Travel Buddy</h1>
-                    <form class="search-form" action="{{ route('trips.index') }}" method="GET">
-                        <div class="row g-3">
-                            <div class="col-md-5">
-                                <input type="text" name="city" class="form-control form-control-lg" placeholder="Destination city" value="{{ request('city') }}">
+                <div class="col-md-8">
+                    <h1 class="text-center mb-4" data-aos="fade-up">Find Your Perfect Travel Buddy</h1>
+                    <div class="search-box" data-aos="fade-up" data-aos-delay="100">
+                        <form action="{{ route('trips.index') }}" method="GET">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="city" placeholder="Where to?" value="{{ request('city') }}">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="start_date" placeholder="Start Date" value="{{ request('start_date') }}">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="end_date" placeholder="End Date" value="{{ request('end_date') }}">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                                </div>
                             </div>
-                            <div class="col-md-5">
-                                <input type="date" name="date" class="form-control form-control-lg" placeholder="Travel date" value="{{ request('date') }}">
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-light btn-lg w-100">Search</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trips Grid -->
     <div class="container">
-        <div class="row mb-4">
-            <div class="col-md-8">
-                <h2>Latest Trip Announcements</h2>
-            </div>
-            <div class="col-md-4 text-end">
-                <a href="{{ route('trips.create') }}" class="btn btn-primary">
-                    <i class="fas fa-plus"></i> Post Your Trip
-                </a>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            @forelse($trips as $trip)
-                <div class="col-md-6 col-lg-4">
-                    <div class="trip-card">
-                        @if($trip->photo2 || $trip->photo3)
-                            <div id="carousel{{ $trip->id }}" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="{{ asset('storage/' . $trip->photo1) }}" class="d-block w-100" alt="Trip photo">
-                                    </div>
-                                    @if($trip->photo2)
-                                        <div class="carousel-item">
-                                            <img src="{{ asset('storage/' . $trip->photo2) }}" class="d-block w-100" alt="Trip photo">
-                                        </div>
-                                    @endif
-                                    @if($trip->photo3)
-                                        <div class="carousel-item">
-                                            <img src="{{ asset('storage/' . $trip->photo3) }}" class="d-block w-100" alt="Trip photo">
-                                        </div>
-                                    @endif
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ $trip->id }}" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ $trip->id }}" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        @else
-                            <img src="{{ asset('storage/' . $trip->photo1) }}" class="trip-image" alt="{{ $trip->title }}">
-                        @endif
-
-                        <div class="card-body">
-                            <div class="author-info">
-                                <div class="author-avatar">
-                                    {{ substr($trip->user->name, 0, 1) }}
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">{{ $trip->user->name }}</h6>
-                                    <small class="text-muted">{{ $trip->created_at->diffForHumans() }}</small>
-                                </div>
-                            </div>
-
-                            <h5 class="card-title">{{ $trip->title }}</h5>
-                            <div class="city-badge">
-                                <i class="fas fa-map-marker-alt"></i> {{ $trip->city }}
-                            </div>
-                            <p class="card-text">{{ Str::limit($trip->description, 100) }}</p>
-                            
-                            <div class="trip-stats">
-                                <div>
-                                    <i class="fas fa-users"></i>
-                                    <span class="ms-1">{{ $trip->buddies_needed }} buddies needed</span>
-                                </div>
-                                <div>
-                                    <i class="fas fa-calendar"></i>
-                                    <span class="ms-1">{{ $trip->start_date->format('M d') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <a href="{{ route('trips.show', $trip) }}" class="btn btn-outline-primary">View Details</a>
-                                @if(Auth::id() === $trip->user_id)
-                                    <a href="{{ route('trips.edit', $trip) }}" class="btn btn-outline-secondary">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                @endif
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="filters" data-aos="fade-right">
+                    <h4 class="filter-title">Filters</h4>
+                    <form action="{{ route('trips.index') }}" method="GET">
+                        <div class="filter-section">
+                            <label class="mb-2">Budget Range</label>
+                            <div class="input-group mb-3">
+                                <input type="number" class="form-control" name="min_budget" placeholder="Min" value="{{ request('min_budget') }}">
+                                <input type="number" class="form-control" name="max_budget" placeholder="Max" value="{{ request('max_budget') }}">
                             </div>
                         </div>
-                    </div>
-                </div>
-            @empty
-                <div class="col-12">
-                    <div class="alert alert-info">
-                        No trip announcements found. Be the first to <a href="{{ route('trips.create') }}">post a trip</a>!
-                    </div>
-                </div>
-            @endforelse
-        </div>
 
-        <div class="d-flex justify-content-center mt-4">
-            {{ $trips->links() }}
+                        <div class="filter-section">
+                            <label class="mb-2">Duration (Days)</label>
+                            <select class="form-select" name="duration">
+                                <option value="">Any</option>
+                                <option value="1-7" {{ request('duration') == '1-7' ? 'selected' : '' }}>1-7 days</option>
+                                <option value="8-14" {{ request('duration') == '8-14' ? 'selected' : '' }}>8-14 days</option>
+                                <option value="15+" {{ request('duration') == '15+' ? 'selected' : '' }}>15+ days</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-section">
+                            <label class="mb-2">Trip Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="type[]" value="adventure" id="adventure">
+                                <label class="form-check-label" for="adventure">Adventure</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="type[]" value="cultural" id="cultural">
+                                <label class="form-check-label" for="cultural">Cultural</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="type[]" value="relaxation" id="relaxation">
+                                <label class="form-check-label" for="relaxation">Relaxation</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="trips-grid">
+                    @forelse($trips as $trip)
+                        <div class="trip-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                            @if($trip->photo1)
+                                <img src="{{ asset('storage/' . $trip->photo1) }}" class="trip-image" alt="{{ $trip->title }}">
+                            @else
+                                <img src="{{ asset('img/default-trip.jpg') }}" class="trip-image" alt="Default trip image">
+                            @endif
+                            
+                            <div class="card-body">
+                                <h5 class="trip-title">{{ $trip->title }}</h5>
+                                <ul class="trip-meta">
+                                    <li><i class="fas fa-map-marker-alt"></i> {{ $trip->city }}</li>
+                                    <li><i class="fas fa-calendar"></i> {{ $trip->start_date->format('M d') }} - {{ $trip->end_date->format('M d, Y') }}</li>
+                                    <li><i class="fas fa-users"></i> {{ $trip->buddies_needed }} buddies needed</li>
+                                    <li><i class="fas fa-money-bill-wave"></i> Budget: ${{ $trip->budget }}</li>
+                                </ul>
+                                
+                                <div class="trip-footer">
+                                    <div class="user-info">
+                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($trip->user->name) }}&background=random" 
+                                             class="user-avatar" alt="{{ $trip->user->name }}">
+                                        <span class="user-name">{{ $trip->user->name }}</span>
+                                    </div>
+                                    <a href="{{ route('trips.show', $trip) }}" class="btn btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12 text-center" data-aos="fade-up">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                No trips found matching your criteria. Try adjusting your filters!
+                            </div>
+                        </div>
+                    @endforelse
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    {{ $trips->links() }}
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    </script>
 </body>
 </html>

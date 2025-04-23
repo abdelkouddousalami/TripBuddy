@@ -65,114 +65,18 @@
             margin-left: 0.5rem;
         }
 
+        /* Enhanced Navbar Styles */
         .navbar {
-            height: 70px !important;
+            height: 80px !important;
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+            padding: 0.5rem 0;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 9999;
-        }
-
-        .navbar-brand img {
-            height: 45px;
-            transition: var(--transition);
-        }
-
-        .nav-link {
-            color: var(--primary-color) !important;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--dark-accent);
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-radius: 12px;
-        }
-
-        .dropdown-item {
-            padding: 0.7rem 1.5rem;
-            transition: var(--transition);
-        }
-
-        .dropdown-item:hover {
-            background: rgba(56, 102, 65, 0.1);
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                border-radius: 0 0 15px 15px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                max-height: calc(100vh - 70px);
-                overflow-y: auto;
-            }
-
-            .nav-link {
-                padding: 0.8rem 1.5rem;
-                border-radius: 8px;
-            }
-
-            .nav-link:hover {
-                background: rgba(56, 102, 65, 0.1);
-            }
-
-            .auth-buttons {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.5rem;
-                padding: 1rem 0;
-            }
-
-            .auth-buttons .btn {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 575.98px) {
-            .navbar {
-                height: 60px !important;
-            }
-
-            .navbar-brand img {
-                height: 35px;
-            }
-
-            .navbar-collapse {
-                top: 60px;
-                max-height: calc(100vh - 60px);
-            }
+            z-index: 1030;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
 
         .navbar-brand {
@@ -227,6 +131,7 @@
             width: 50%;
         }
 
+        /* Enhanced Auth Buttons */
         .auth-buttons {
             display: flex;
             gap: 1rem;
@@ -267,6 +172,7 @@
             box-shadow: 0 8px 20px rgba(56, 102, 65, 0.3);
         }
 
+        /* Enhanced Dropdown Styles */
         .dropdown-menu {
             border: none;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -289,6 +195,7 @@
             transform: translateX(5px);
         }
 
+        /* Responsive Navbar Styles */
         @media (max-width: 991.98px) {
             .navbar-collapse {
                 background: rgba(255, 255, 255, 0.98);
@@ -337,6 +244,7 @@
             }
         }
 
+        /* Hamburger Menu Enhancement */
         .navbar-toggler {
             border: none;
             padding: 0.5rem;
@@ -354,6 +262,7 @@
             height: 1.5em;
         }
 
+        /* Hero Section Enhanced Styles */
         .hero {
             min-height: 100vh;
             background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(74, 120, 86, 0.7)), url("{{ asset('img/hero.jpg') }}") no-repeat center center;
@@ -487,6 +396,7 @@
             font-weight: 500;
         }
 
+        /* Button Styles */
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
@@ -512,6 +422,7 @@
             border-color: var(--dark-accent);
         }
 
+        /* Section Styles */
         .section {
             padding: 100px 0;
         }
@@ -548,6 +459,7 @@
             margin-bottom: 1rem;
         }
 
+        /* Section specific card styles */
         #booking .card {
             min-height: 400px;
         }
@@ -556,14 +468,17 @@
             min-height: 450px;
         }
 
+        /* Form styles in booking section */
         #booking form {
             margin-top: auto;
         }
 
+        /* Make all buttons align at bottom */
         .card .btn {
             margin-top: auto;
         }
 
+        /* Section padding consistency */
         .section {
             padding: 100px 0;
         }
@@ -572,6 +487,7 @@
             --bs-gutter-y: 2rem;
         }
 
+        /* Footer */
         .footer {
             background: var(--primary-color);
             color: var(--light-color);
@@ -597,6 +513,7 @@
             color: var(--light-color);
         }
 
+        /* Featured Destinations */
         .destinations-section {
             background: var(--light-color);
             padding: 6rem 0;
@@ -641,6 +558,7 @@
             background: rgba(255, 255, 255, 0.9);
         }
 
+        /* How It Works Section */
         .how-it-works {
             background: white;
             padding: 6rem 0;
@@ -672,9 +590,10 @@
             margin: 0 auto 1.5rem;
             color: white;
             font-size: 2rem;
-            box-shadow: var (--card-shadow);
+            box-shadow: var(--card-shadow);
         }
 
+        /* Search Section */
         .search-section {
             background: var(--nature-gradient);
             padding: 4rem 0;
@@ -704,6 +623,7 @@
             z-index: 1;
         }
 
+        /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -726,6 +646,7 @@
             }
         }
 
+        /* Stats Section */
         .stats-section {
             background: white;
             padding: 4rem 0;
@@ -735,7 +656,7 @@
             text-align: center;
             padding: 2rem;
             background: var(--glass-bg);
-            backdrop-filter: var (--glass-blur);
+            backdrop-filter: var(--glass-blur);
             border: var(--glass-border);
             border-radius: 15px;
             transition: var(--smooth-transition);
@@ -759,6 +680,7 @@
             font-weight: 500;
         }
 
+        /* Global Variables */
         :root {
             --section-spacing: 8rem;
             --section-padding: 6rem;
@@ -775,6 +697,7 @@
             --z-index-modal: 1050;
         }
 
+        /* Enhanced Section Spacing */
         .section {
             padding: var(--section-spacing) 0;
             position: relative;
@@ -792,6 +715,7 @@
             pointer-events: none;
         }
 
+        /* Enhanced Card Styles */
         .card {
             border: none;
             border-radius: var(--border-radius);
@@ -818,6 +742,7 @@
             transform: scale(1.05);
         }
 
+        /* Enhanced Section Titles */
         .section-title {
             margin-bottom: 4rem;
             position: relative;
@@ -836,11 +761,13 @@
             border-radius: 3px;
         }
 
+        /* Enhanced Grid Spacing */
         .row {
             --bs-gutter-x: var(--card-spacing);
             --bs-gutter-y: var(--card-spacing);
         }
 
+        /* Enhanced Button Styles */
         .btn {
             padding: 0.8rem 2rem;
             border-radius: 50px;
@@ -869,6 +796,7 @@
             height: 300px;
         }
 
+        /* Enhanced Form Controls */
         .form-control {
             border-radius: 10px;
             padding: 1rem;
@@ -882,6 +810,7 @@
             border-color: var(--secondary-color);
         }
 
+        /* Enhanced Stats Design */
         .hero-stats {
             bottom: 200px;
         }
@@ -901,6 +830,7 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
+        /* Enhanced Footer Design */
         .footer {
             position: relative;
             overflow: hidden;
@@ -928,6 +858,7 @@
             transform: var(--hover-lift) scale(1.1);
         }
 
+        /* Enhanced Animations */
         [data-aos] {
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -936,11 +867,13 @@
             transition-delay: calc(var(--delay, 0) * 100ms);
         }
 
+        /* Fixed Positioning Issues */
         body {
             overflow-x: hidden;
             position: relative;
         }
 
+        /* Enhanced Section Layout */
         .section {
             position: relative;
             padding: var(--section-padding) 0;
@@ -954,9 +887,10 @@
             z-index: calc(var(--z-index-base) + 2);
         }
 
+        /* Fixed Hero Section */
         .hero {
             position: relative;
-            margin-top: -105px; 
+            margin-top: -105px; /* Adjust for navbar height */
             padding-top: 105px;
             min-height: 100vh;
             z-index: var(--z-index-base);
@@ -978,6 +912,7 @@
             z-index: calc(var(--z-index-base) + 2);
         }
 
+        /* Fixed Card Layouts */
         .card {
             position: relative;
             height: 100%;
@@ -993,6 +928,7 @@
             flex-direction: column;
         }
 
+        /* Fixed Booking Section */
         #booking {
             position: relative;
             z-index: calc(var(--z-index-base) + 1);
@@ -1005,6 +941,7 @@
             min-height: 450px;
         }
 
+        /* Fixed Buddy Section */
         #buddy {
             position: relative;
             z-index: calc(var(--z-index-base) + 1);
@@ -1018,6 +955,7 @@
             min-height: 500px;
         }
 
+        /* Fixed Destinations Section */
         #destinations {
             position: relative;
             z-index: calc(var(--z-index-base) + 1);
@@ -1030,6 +968,7 @@
             min-height: 450px;
         }
 
+        /* Enhanced Grid System */
         .row {
             --bs-gutter-x: 2rem;
             --bs-gutter-y: 2rem;
@@ -1043,6 +982,7 @@
             margin-top: var(--bs-gutter-y);
         }
 
+        /* Fixed Navbar */
         .navbar {
             position: relative;
             z-index: var(--z-index-header);
@@ -1052,24 +992,28 @@
             z-index: calc(var(--z-index-header) + 1);
         }
 
+        /* Enhanced Card Images */
         .card-img-top {
             height: 250px;
             object-fit: cover;
             width: 100%;
         }
 
+        /* Enhanced Button Positioning */
         .card .btn {
             margin-top: auto;
             position: relative;
             z-index: calc(var(--z-index-base) + 2);
         }
 
+        /* Fixed Footer */
         .footer {
             position: relative;
             z-index: calc(var(--z-index-base) + 1);
             padding: 6rem 0 3rem;
         }
 
+        /* Media Queries for Responsive Layout */
         @media (max-width: 991.98px) {
             .hero-content {
                 padding: 3rem 1rem;
@@ -1110,6 +1054,7 @@
             }
         }
 
+        /* Enhanced Mobile Navbar Styles */
         @media (max-width: 991.98px) {
             .navbar {
                 height: 70px !important;
@@ -1225,6 +1170,7 @@
             }
         }
 
+        /* Enhanced Mobile and Responsive Styles */
         @media (max-width: 991.98px) {
             .navbar {
                 height: 60px !important;
@@ -1292,6 +1238,7 @@
                 padding: 0.75rem;
             }
 
+            /* Hero Section Mobile Adjustments */
             .hero {
                 min-height: calc(100vh - 60px);
                 margin-top: 60px;
@@ -1335,6 +1282,7 @@
                 margin-bottom: 1rem;
             }
 
+            /* Section Adjustments */
             .section {
                 padding: 3rem 0;
             }
@@ -1353,6 +1301,7 @@
             }
         }
 
+        /* Small Mobile Devices */
         @media (max-width: 575.98px) {
             .navbar-brand img {
                 height: 35px;
@@ -1393,6 +1342,7 @@
             }
         }
 
+        /* General Responsive Improvements */
         .container {
             padding-left: 1rem;
             padding-right: 1rem;
@@ -1416,6 +1366,7 @@
             padding-right: 0.75rem;
         }
 
+        /* Card Grid System */
         .card {
             height: 100%;
             display: flex;
@@ -1438,22 +1389,26 @@
             align-self: stretch;
         }
 
+        /* Navigation Enhancements */
         .nav-link {
             white-space: nowrap;
             transition: all 0.3s ease;
         }
 
+        /* Form Responsiveness */
         .form-control {
             font-size: 1rem;
             padding: 0.75rem 1rem;
         }
 
+        /* Button Responsiveness */
         .btn {
             padding: 0.75rem 1.5rem;
             font-size: 1rem;
             white-space: nowrap;
         }
 
+        /* Footer Responsive Design */
         .footer {
             padding: 3rem 0 2rem;
         }
@@ -1468,6 +1423,7 @@
             }
         }
 
+        /* Enhanced Utility Classes */
         .text-truncate-2 {
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -1480,582 +1436,24 @@
             width: 100%;
             height: 100%;
         }
-
-        .navbar {
-            position: fixed;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            z-index: 1030;
-        }
-
-        .navbar.scrolled {
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            padding: 0;
-        }
-
-        .navbar-brand img {
-            height: 50px;
-            transition: height 0.3s ease;
-        }
-
-        .nav-link {
-            color: var(--primary-color);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--secondary-color);
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar {
-                padding: 0.5rem;
-            }
-
-            .navbar-collapse {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                max-height: calc(100vh - 70px);
-                overflow-y: auto;
-                transform: translateY(-100%);
-                transition: transform 0.3s ease-in-out;
-                opacity: 0;
-                visibility: hidden;
-            }
-
-            .navbar-collapse.show {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .navbar-nav {
-                margin: 1rem 0;
-            }
-
-            .nav-item {
-                margin: 0.5rem 0;
-            }
-
-            .nav-link {
-                padding: 0.75rem 1rem;
-                background: rgba(56, 102, 65, 0.05);
-                border-radius: 8px;
-                display: block;
-                text-align: left;
-            }
-
-            .auth-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .auth-buttons .btn {
-                width: 100%;
-                margin: 0.25rem 0;
-            }
-
-            .navbar-toggler {
-                padding: 0.25rem;
-                border: none;
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: transparent;
-            }
-
-            .navbar-toggler:focus {
-                box-shadow: none;
-                outline: none;
-            }
-        }
-
-        @media (max-width: 575.98px) {
-            .navbar-brand img {
-                height: 40px;
-            }
-
-            .navbar-collapse {
-                top: 60px;
-                max-height: calc(100vh - 60px);
-            }
-
-            .nav-link {
-                font-size: 0.95rem;
-            }
-
-            .auth-buttons .btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            padding: 0.5rem;
-        }
-
-        .dropdown-item {
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-item:hover {
-            background: rgba(56, 102, 65, 0.05);
-            transform: translateX(5px);
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px !important;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1030;
-            padding: 0 !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar .container {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1.5rem;
-            position: relative;
-        }
-
-        /* Brand positioning */
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-            height: 100%;
-        }
-
-        .navbar-brand img {
-            height: 45px;
-            width: auto;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-collapse {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-nav {
-            display: flex;
-            align-items: center;
-            margin: 0 auto;
-            padding: 0;
-            gap: 1rem;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-link {
-            padding: 0.5rem 1rem !important;
-            color: var(--primary-color) !important;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-left: auto;
-        }
-
-        .auth-buttons .btn {
-            padding: 0.5rem 1.25rem;
-            font-weight: 600;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-        }
-
-        /* Mobile navigation fixes */
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                height: calc(100vh - 70px);
-                overflow-y: auto;
-                display: none;
-            }
-
-            .navbar-collapse.show {
-                display: block;
-                animation: slideDown 0.3s ease-out forwards;
-            }
-
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            .navbar-nav {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.5rem;
-                margin: 1rem 0;
-            }
-
-            .nav-item {
-                width: 100%;
-            }
-
-            .nav-link {
-                padding: 0.75rem 1rem !important;
-                width: 100%;
-                background: rgba(56, 102, 65, 0.05);
-                border-radius: 8px;
-                justify-content: flex-start;
-            }
-
-            .auth-buttons {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.5rem;
-                margin-top: 1rem;
-            }
-
-            .auth-buttons .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 575.98px) {
-            .navbar {
-                height: 60px !important;
-            }
-
-            .navbar .container {
-                padding: 0 1rem;
-            }
-
-            .navbar-brand img {
-                height: 35px;
-            }
-
-            .navbar-collapse {
-                top: 60px;
-                height: calc(100vh - 60px);
-            }
-
-            .navbar-toggler {
-                padding: 0.25rem;
-            }
-        }
-
-        .hero {
-            padding-top: 70px;
-        }
-
-        @media (max-width: 575.98px) {
-            .hero {
-                padding-top: 60px;
-            }
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px !important;
-            padding: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar > .container {
-            max-width: 1320px;
-            margin: 0 auto;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
-        }
-
-        .navbar-nav {
-            flex: 1;
-            justify-content: center;
-            margin: 0 2rem;
-        }
-
-        .navbar-collapse {
-            display: flex;
-            flex-basis: auto;
-            flex-grow: 1;
-            align-items: center;
-            height: 100%;
-        }
-
-        .nav-item {
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-link {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            padding: 0 1.5rem !important;
-            position: relative;
-        }
-
-        .auth-buttons {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                height: auto;
-                max-height: calc(100vh - 70px);
-                background: rgba(255, 255, 255, 0.98);
-                padding: 1rem;
-                overflow-y: auto;
-                display: none;
-            }
-
-            .navbar-collapse.show {
-                display: block;
-            }
-
-            .navbar-nav {
-                flex-direction: column;
-                margin: 0;
-                padding: 1rem 0;
-            }
-
-            .nav-item, .nav-link {
-                height: auto;
-                width: 100%;
-            }
-
-            .auth-buttons {
-                margin: 1rem 0 0 0;
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .auth-buttons .btn {
-                width: 100%;
-            }
-        }
-
-        .navbar {
-            position: fixed !important;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px !important;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 0 !important;
-        }
-
-        .navbar .container {
-            max-width: 1320px;
-            height: 100%;
-            display: flex !important;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
-        }
-
-        .navbar-collapse {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            margin: 0 2rem;
-        }
-
-        .navbar-nav {
-            margin: 0 auto !important;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-item {
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-link {
-            padding: 0.5rem 1rem !important;
-            font-weight: 600;
-            color: var(--primary-color) !important;
-        }
-
-        .auth-buttons {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .auth-buttons .btn {
-            padding: 0.5rem 1.25rem;
-            border-radius: 25px;
-            font-weight: 600;
-            min-width: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                margin: 0;
-                padding: 1rem;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                display: none;
-            }
-
-            .navbar-collapse.show {
-                display: block;
-            }
-
-            .navbar-nav {
-                flex-direction: column;
-                gap: 0.5rem;
-                margin: 0 0 1rem 0 !important;
-            }
-
-            .nav-item {
-                width: 100%;
-            }
-
-            .nav-link {
-                width: 100%;
-                text-align: center;
-                padding: 0.75rem !important;
-                background: rgba(56, 102, 65, 0.05);
-                border-radius: 8px;
-            }
-
-            .auth-buttons {
-                width: 100%;
-                flex-direction: column;
-                gap: 0.5rem;
-                margin: 0;
-            }
-
-            .auth-buttons .btn,
-            .auth-buttons .d-flex {
-                width: 100%;
-            }
-
-            .auth-buttons .d-flex {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-
-        @media (max-width: 575.98px) {
-            .navbar {
-                height: 60px !important;
-            }
-
-            .navbar-brand img {
-                height: 35px;
-            }
-
-            .navbar-collapse {
-                top: 60px;
-            }
-        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top" data-aos="fade-down">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
+            <a class="navbar-brand" href="#">
                 <img src="{{ asset('img/logo.png') }}" alt="TripBuddy Logo">
             </a>
-
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
+            <!-- Navigation items in the middle -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('trips.index') }}">Find Buddy</a>
@@ -2065,21 +1463,22 @@
                     </li>
                 </ul>
                 
+                <!-- Auth buttons on the right -->
                 <div class="auth-buttons">
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Sign In</a>
                         <a href="{{ route('register') }}" class="btn btn-primary">Sign Up</a>
                     @else
                         <div class="dropdown">
-                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                                 <li><a class="dropdown-item" href="{{ route('profile.show') }}">My Profile</a></li>
                                 <li><a class="dropdown-item" href="{{ route('trips.create') }}">Post a Trip</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
-                                    <form action="{{ route('logout') }}" method="POST">
+                                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                         @csrf
                                         <button type="submit" class="dropdown-item">Logout</button>
                                     </form>
@@ -2092,155 +1491,8 @@
         </div>
     </nav>
 
-    <style>
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 0;
-        }
-
-        .navbar .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
-            padding: 0 1rem;
-        }
-
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            padding: 0;
-            margin-right: 1rem;
-        }
-
-        .navbar-brand img {
-            height: 45px;
-            width: auto;
-        }
-
-        .navbar-collapse {
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-
-        .navbar-nav {
-            display: flex;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-
-        .nav-item {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            margin: 0 0.5rem;
-        }
-
-        .nav-link {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-            margin-left: 1rem;
-        }
-
-        .auth-buttons .btn {
-            padding: 0.5rem 1.25rem;
-            font-weight: 600;
-            border-radius: 25px;
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                height: auto;
-                background: rgba(255, 255, 255, 0.98);
-                padding: 1rem;
-                display: none;
-                overflow-y: auto;
-                max-height: calc(100vh - 70px);
-            }
-
-            .navbar-collapse.show {
-                display: block;
-            }
-
-            .navbar-nav {
-                flex-direction: column;
-                height: auto;
-                width: 100%;
-                gap: 0.5rem;
-            }
-
-            .nav-item {
-                width: 100%;
-                height: auto;
-                margin: 0;
-            }
-
-            .nav-link {
-                width: 100%;
-                padding: 0.75rem 1rem;
-                justify-content: center;
-                background: rgba(56, 102, 65, 0.05);
-                border-radius: 8px;
-            }
-
-            .auth-buttons {
-                margin: 1rem 0 0 0;
-                width: 100%;
-            }
-
-            .auth-buttons .d-flex {
-                width: 100%;
-                flex-direction: column;
-            }
-
-            .auth-buttons .btn {
-                width: 100%;
-                margin: 0.25rem 0;
-            }
-        }
-
-        @media (max-width: 575.98px) {
-            .navbar {
-                height: 60px;
-            }
-
-            .navbar-brand img {
-                height: 35px;
-            }
-
-            .navbar-collapse {
-                top: 60px;
-                max-height: calc(100vh - 60px);
-            }
-        }
-    </style>
-
-    <section id="home" class="hero" style="margin-top: 70px;">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
         <div class="container position-relative">
             <div class="row align-items-center min-vh-100">
                 <div class="col-lg-8" data-aos="fade-right">
@@ -2278,7 +1530,7 @@
                     </div>
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="hero-stat-item">
-                            <div class="hero-stat-number">150+</</div>
+                            <div class="hero-stat-number">150+</div>
                             <div class="hero-stat-label">Destinations</div>
                         </div>
                     </div>
@@ -2293,6 +1545,7 @@
         </div>
     </section>
 
+    <!-- Booking Section -->
     <section id="booking" class="section bg-light">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Find Your Perfect Stay</h2>
@@ -2345,6 +1598,7 @@
         </div>
     </section>
 
+    <!-- Find Buddy Section -->
     <section id="buddy" class="section">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Find Your Travel Buddy</h2>
@@ -2383,6 +1637,7 @@
         </div>
     </section>
 
+    <!-- Destinations Section -->
     <section id="destinations" class="section bg-light">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Popular Destinations</h2>
@@ -2421,6 +1676,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -2454,82 +1710,23 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.querySelector('.navbar');
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const navbarToggler = document.querySelector('.navbar-toggler');
-            let isMenuOpen = false;
-
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            navbarToggler.addEventListener('click', function() {
-                isMenuOpen = !isMenuOpen;
-                if (isMenuOpen) {
-                    navbarCollapse.style.display = 'block';
-                    navbarCollapse.offsetHeight;
-                    navbarCollapse.classList.add('show');
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    navbarCollapse.classList.remove('show');
-                    document.body.style.overflow = 'auto';
-                    setTimeout(() => {
-                        if (!isMenuOpen) {
-                            navbarCollapse.style.display = 'none';
-                        }
-                    }, 300);
-                }
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!navbar.contains(e.target) && isMenuOpen) {
-                    navbarToggler.click();
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth < 992 && isMenuOpen) {
-                        navbarToggler.click();
-                    }
-                });
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth >= 992) {
-                    navbarCollapse.style.display = '';
-                    navbarCollapse.classList.remove('show');
-                    document.body.style.overflow = 'auto';
-                    isMenuOpen = false;
-                }
-            });
-
-            const dropdowns = document.querySelectorAll('.dropdown');
-            dropdowns.forEach(dropdown => {
-                const toggle = dropdown.querySelector('.dropdown-toggle');
-                const menu = dropdown.querySelector('.dropdown-menu');
-                
-                toggle.addEventListener('click', (e) => {
-                    if (window.innerWidth < 992) {
-                        e.preventDefault();
-                        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-                    }
-                });
-            });
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
         });
     </script>
 </body>

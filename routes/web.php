@@ -8,6 +8,7 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OwnerRequestController;
+use App\Http\Controllers\HotelController;
 
 // Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -39,6 +40,16 @@ Route::middleware('auth')->group(function () {
 // Comment routes
 Route::post('/trips/{trip}/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+// Hotel routes
+Route::get('/hotels', [HotelController::class, 'index'])->name('hotels.index');
+Route::get('/hotels/owner-dashboard', [HotelController::class, 'ownerDashboard'])->name('hotels.owner-dashboard');
+Route::get('/hotels/create', [HotelController::class, 'create'])->name('hotels.create');
+Route::post('/hotels', [HotelController::class, 'store'])->name('hotels.store');
+Route::get('/hotels/{hotel}', [HotelController::class, 'show'])->name('hotels.show');
+Route::get('/hotels/{hotel}/edit', [HotelController::class, 'edit'])->name('hotels.edit');
+Route::put('/hotels/{hotel}', [HotelController::class, 'update'])->name('hotels.update');
+Route::delete('/hotels/{hotel}', [HotelController::class, 'destroy'])->name('hotels.destroy');
 
 // Admin routes
 Route::middleware(['auth', 'admin'])->group(function () {

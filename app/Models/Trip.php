@@ -14,6 +14,7 @@ class Trip extends Model
         'description',
         'city',
         'buddies_needed',
+        'budget',
         'photo1',
         'photo2',
         'photo3',
@@ -26,6 +27,7 @@ class Trip extends Model
         'start_date' => 'date',
         'end_date' => 'date',
         'buddies_needed' => 'integer',
+        'budget' => 'decimal:2'
     ];
 
     protected static function boot()

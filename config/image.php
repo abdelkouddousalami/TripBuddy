@@ -1,20 +1,25 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Image Driver
     |--------------------------------------------------------------------------
     |
-    | Intervention Image supports "GD Library" and "Imagick" to process images
-    | internally. You may choose one of them according to your PHP
-    | configuration. By default PHP's "GD Library" implementation is used.
-    |
-    | Supported: "gd", "imagick"
+    | Supported drivers: "gd", "imagick"
     |
     */
 
-    'driver' => 'gd'
+    'driver' => 'gd',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Default Quality
+    |--------------------------------------------------------------------------
+    |
+    | The default quality for JPEG image encoding (1-100)
+    |
+    */
+
+    'quality' => 90,
 ];
