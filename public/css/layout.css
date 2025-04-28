@@ -1,0 +1,346 @@
+/* Base Layout */
+body {
+    padding-top: 70px;
+}
+
+/* Navbar */
+.navbar {
+    padding: 1rem 0;
+    transition: var(--smooth-transition);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-bottom: var(--glass-border);
+    z-index: var(--z-index-header);
+}
+
+.navbar .container {
+    height: 100%;
+}
+
+.navbar-brand {
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-link {
+    color: #444;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: var(--smooth-transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+.navbar-nav {
+    margin-left: 3rem;
+    gap: 1rem;
+}
+
+.auth-buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.auth-buttons .btn {
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: var(--smooth-transition);
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    color: var(--primary-color);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.dropdown-menu {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 0.5rem;
+    min-width: 200px;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1rem;
+    color: #444;
+    font-weight: 500;
+    border-radius: calc(var(--border-radius) - 5px);
+    transition: var(--smooth-transition);
+}
+
+.dropdown-item:hover {
+    background-color: rgba(106, 153, 78, 0.1);
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.dropdown-divider {
+    border-color: rgba(0,0,0,0.1);
+    margin: 0.5rem 0;
+}
+
+/* Mobile Navigation */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        border: var(--glass-border);
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 1rem;
+        right: 1rem;
+        box-shadow: var(--card-shadow);
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .auth-buttons .btn {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .navbar-nav {
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Smaller screens */
+@media (max-width: 767.98px) {
+    .navbar {
+        height: 60px !important;
+    }
+
+    .navbar-brand img {
+        height: 35px;
+    }
+
+    .footer-content {
+        gap: 2rem;
+    }
+
+    .footer {
+        padding-top: 3rem;
+    }
+}
+
+/* Footer Layout */
+.footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 5rem 0 0;
+}
+
+.footer h4 {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.footer ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: var(--smooth-transition);
+}
+
+.footer ul li a:hover {
+    color: white;
+    padding-left: 0.5rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand img {
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--smooth-transition);
+}
+
+.social-link:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.footer-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    opacity: 0.8;
+    transition: var(--smooth-transition);
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    padding-left: 0.5rem;
+}
+
+.footer-contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-contact-info i {
+    width: 20px;
+}
+
+.newsletter-form {
+    position: relative;
+    margin-top: 1rem;
+}
+
+.newsletter-input {
+    width: 100%;
+    padding: 1rem;
+    padding-right: 3rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 25px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.newsletter-input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.newsletter-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    width: 40px;
+    border-radius: 20px;
+    border: none;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--smooth-transition);
+}
+
+.newsletter-button:hover {
+    background: white;
+    transform: translateX(-3px);
+}
+
+.footer-bottom {
+    padding: 1.5rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-bottom p {
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 575.98px) {
+    .navbar {
+        padding: 0.75rem 0;
+    }
+
+    .navbar-brand img {
+        height: 35px;
+    }
+}
+
+/* Main Content Area */
+main {
+    min-height: calc(100vh - 70px - 400px); /* viewport height - navbar - footer */
+    padding-bottom: 4rem;
+}

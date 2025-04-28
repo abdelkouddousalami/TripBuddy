@@ -13,7 +13,7 @@ class HotelPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class HotelPolicy
      */
     public function view(User $user, Hotel $hotel): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class HotelPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->isOwner();
     }
 
     /**
@@ -37,7 +37,7 @@ class HotelPolicy
      */
     public function update(User $user, Hotel $hotel): bool
     {
-        return false;
+        return $user->id === $hotel->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class HotelPolicy
      */
     public function delete(User $user, Hotel $hotel): bool
     {
-        return false;
+        return $user->id === $hotel->user_id;
     }
 
     /**
@@ -62,5 +62,13 @@ class HotelPolicy
     public function forceDelete(User $user, Hotel $hotel): bool
     {
         return false;
+    }
+
+    /**
+     * Determine whether the user can contact the hotel owner.
+     */
+    public function contact(User $user, Hotel $hotel): bool
+    {
+        return true; // Allow any authenticated user to contact hotel owners
     }
 }

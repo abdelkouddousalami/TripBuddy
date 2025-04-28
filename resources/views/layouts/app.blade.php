@@ -4,153 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'TripBuddy') }}</title>
+    
+    <!-- Third-party CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <style>
-        :root {
-            --primary-color: #386641;
-            --secondary-color: #6A994E;
-            --accent-color: #A7C957;
-            --light-color: #F2E8CF;
-            --dark-accent: #BC4749;
-            --glass-bg: rgba(255, 255, 255, 0.95);
-            --glass-blur: blur(10px);
-            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            --hover-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            --transition: all 0.3s ease;
-        }
-
-        body {
-            padding-top: 70px;
-        }
-
-        /* Navbar styles */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px !important;
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1030;
-            padding: 0;
-            transition: var(--transition);
-        }
-
-        .navbar .container {
-            height: 100%;
-        }
-
-        .navbar-brand {
-            padding: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-brand img {
-            height: 45px;
-            width: auto;
-            transition: var(--transition);
-        }
-
-        .nav-link {
-            color: var(--primary-color) !important;
-            font-weight: 600;
-            padding: 0.5rem 1rem !important;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .navbar-nav {
-            margin: 0 auto;
-        }
-
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .auth-buttons .btn {
-            padding: 0.5rem 1.25rem;
-            font-weight: 600;
-            border-radius: 25px;
-            transition: var(--transition);
-        }
-
-        .dropdown-menu {
-            border: none;
-            box-shadow: var(--card-shadow);
-            border-radius: 12px;
-            padding: 0.5rem;
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-        }
-
-        .dropdown-item {
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-
-        .dropdown-item:hover {
-            background: rgba(56, 102, 65, 0.1);
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: var(--glass-bg);
-                backdrop-filter: var(--glass-blur);
-                padding: 1rem;
-                border-radius: 0 0 20px 20px;
-                box-shadow: var(--card-shadow);
-                max-height: calc(100vh - 70px);
-                overflow-y: auto;
-            }
-
-            .auth-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .auth-buttons .btn {
-                width: 100%;
-            }
-
-            .nav-link {
-                padding: 0.75rem 1rem !important;
-            }
-
-            .nav-link::after {
-                display: none;
-            }
-        }
-    </style>
+    
+    <!-- Base styles -->
+    <link href="{{ asset('css/common.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+    
+    <!-- Page specific styles -->
+    @if(Request::is('/'))
+        <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    @endif
+    
+    @if(Request::is('trips'))
+        <link href="{{ asset('css/trips.css') }}" rel="stylesheet">
+    @endif
+    
+    @if(Request::is('trips/create'))
+        <link href="{{ asset('css/create.css') }}" rel="stylesheet">
+    @endif
+    
+    @if(Request::is('trips/*') && !Request::is('trips/create'))
+        <link href="{{ asset('css/show.css') }}" rel="stylesheet">
+    @endif
+    
+    @if(Request::is('login') || Request::is('register'))
+        <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+    @endif
+    
+    @if(Request::is('profile*'))
+        <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+    @endif
+    
+    @if(Request::is('hotels*'))
+        <link href="{{ asset('css/hotels.css') }}" rel="stylesheet">
+    @endif
+    
+    <!-- Additional styles -->
     @stack('styles')
 </head>
 <body>

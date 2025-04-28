@@ -1,0 +1,300 @@
+.profile-header {
+    background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(74, 120, 86, 0.8));
+    padding: 8rem 0 4rem;
+    margin-top: -70px;
+    color: white;
+}
+
+.profile-cover {
+    position: relative;
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: var(--text-shadow);
+}
+
+.profile-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.profile-meta-item {
+    text-align: center;
+}
+
+.meta-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.meta-label {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* Profile Navigation */
+.profile-nav {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-bottom: var(--glass-border);
+    margin-bottom: 2rem;
+}
+
+.nav-tabs {
+    border: none;
+    padding: 0 1rem;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    color: #666;
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+    margin-right: 1rem;
+    position: relative;
+}
+
+.nav-tabs .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: var(--smooth-transition);
+}
+
+.nav-tabs .nav-link:hover::after,
+.nav-tabs .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    background: none;
+}
+
+/* Profile Content */
+.profile-content {
+    padding: 3rem 0;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+/* Bio Section */
+.bio-section {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.bio-text {
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.interests-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.interest-tag {
+    background: rgba(167, 201, 87, 0.1);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Trips Grid */
+.trips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.trip-card {
+    height: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--smooth-transition);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+}
+
+.trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.trip-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.profile-hotel-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.gradient-background {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
+
+.preview-image {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+}
+
+/* Settings Form */
+.settings-section {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.settings-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.avatar-upload {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.avatar-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: var(--smooth-transition);
+}
+
+.upload-btn:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+/* Empty States */
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #666;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 991.98px) {
+    .profile-header {
+        padding: 6rem 0 3rem;
+    }
+
+    .profile-meta {
+        gap: 1.5rem;
+    }
+
+    .meta-value {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-name {
+        font-size: 1.75rem;
+    }
+
+    .nav-tabs .nav-link {
+        padding: 0.75rem 1rem;
+    }
+
+    .trips-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 575.98px) {
+    .profile-header {
+        padding: 5rem 0 2rem;
+    }
+
+    .profile-meta {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .profile-meta-item {
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+
+    .settings-card {
+        padding: 1.5rem;
+    }
+}

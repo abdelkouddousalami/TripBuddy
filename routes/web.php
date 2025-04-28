@@ -35,6 +35,10 @@ Route::middleware('auth')->group(function () {
     
     // Owner request routes
     Route::post('/owner-requests', [OwnerRequestController::class, 'store'])->name('owner-requests.store');
+
+    // Contact host route
+    Route::post('/hotels/{hotel}/contact', [HotelController::class, 'contact'])->name('hotels.contact');
+    Route::post('/messages/{message}/reply', [HotelController::class, 'reply'])->name('messages.reply');
 });
 
 // Comment routes

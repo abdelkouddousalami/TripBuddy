@@ -3,22 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class HotelController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:owner')->except(['index', 'show']);
+        $this->middleware('role:owner')->except(['index', 'show', 'contact']);
     }
 
     public function ownerDashboard()
     {
-        $hotels = Hotel::where('user_id', auth()->id())->latest()->get();
-        return view('hotels.owner-dashboard', compact('hotels'));
+        $hotels = Hotel::where('user_id', Auth::id())->latest()->get();
+        $messages = Message::whereIn('hotel_id', $hotels->pluck('id'))
+                         ->with(['sender', 'hotel', 'replies', 'replies.sender'])
+                         ->latest()
+                         ->get();
+        
+        return view('hotels.owner-dashboard', compact('hotels', 'messages'));
     }
 
     public function index()
@@ -46,7 +53,7 @@ class HotelController extends Controller
         ]);
 
         $hotel = new Hotel($validated);
-        $hotel->user_id = auth()->id();
+        $hotel->user_id = Auth::id();
 
         if ($request->hasFile('photo1')) {
             $hotel->photo1 = $request->file('photo1')->store('hotels', 'public');
@@ -135,5 +142,41 @@ class HotelController extends Controller
 
         return redirect()->route('hotels.owner-dashboard')
             ->with('success', 'Property deleted successfully.');
+    }
+
+    public function contact(Request $request, Hotel $hotel)
+    {
+        $validated = $request->validate([
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string'
+        ]);
+
+        Message::create([
+            'hotel_id' => $hotel->id,
+            'sender_id' => Auth::id(),
+            'subject' => $validated['subject'],
+            'message' => $validated['message']
+        ]);
+
+        return back()->with('success', 'Message sent successfully! The host will read your message soon.');
+    }
+
+    public function reply(Request $request, Message $message)
+    {
+        $this->authorize('update', $message->hotel);
+
+        $validated = $request->validate([
+            'message' => 'required|string'
+        ]);
+
+        Message::create([
+            'hotel_id' => $message->hotel_id,
+            'sender_id' => Auth::id(),
+            'subject' => 'Re: ' . $message->subject,
+            'message' => $validated['message'],
+            'parent_id' => $message->id
+        ]);
+
+        return back()->with('success', 'Reply sent successfully!');
     }
 }

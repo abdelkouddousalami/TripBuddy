@@ -47,7 +47,7 @@
                            name="photo1" accept="image/png">
                     @if($trip->photo1)
                         <div class="mt-2">
-                            <img src="{{ asset('storage/' . $trip->photo1) }}" alt="Current photo 1" class="img-thumbnail" style="height: 100px">
+                            <img src="{{ asset('storage/' . $trip->photo1) }}" alt="Current photo 1" class="img-thumbnail trip-thumbnail">
                         </div>
                     @endif
                     @error('photo1')
@@ -59,7 +59,7 @@
                            name="photo2" accept="image/png">
                     @if($trip->photo2)
                         <div class="mt-2">
-                            <img src="{{ asset('storage/' . $trip->photo2) }}" alt="Current photo 2" class="img-thumbnail" style="height: 100px">
+                            <img src="{{ asset('storage/' . $trip->photo2) }}" alt="Current photo 2" class="img-thumbnail trip-thumbnail">
                         </div>
                     @endif
                     @error('photo2')
@@ -71,7 +71,7 @@
                            name="photo3" accept="image/png">
                     @if($trip->photo3)
                         <div class="mt-2">
-                            <img src="{{ asset('storage/' . $trip->photo3) }}" alt="Current photo 3" class="img-thumbnail" style="height: 100px">
+                            <img src="{{ asset('storage/' . $trip->photo3) }}" alt="Current photo 3" class="img-thumbnail trip-thumbnail">
                         </div>
                     @endif
                     @error('photo3')

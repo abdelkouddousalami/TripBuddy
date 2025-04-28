@@ -1,170 +1,147 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="owner-dashboard-section py-5">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-lg-8">
-                <h1 class="mb-0">Owner Dashboard</h1>
-                <p class="text-muted">Manage your property listings</p>
-            </div>
-            <div class="col-lg-4 text-lg-end">
-                <a href="{{ route('hotels.create') }}" class="btn btn-primary">
-                    <i class="fas fa-plus-circle me-2"></i>Add Property
-                </a>
+<div class="container py-5">
+    <h1 class="mb-4">Owner Dashboard</h1>
+    
+    <div class="row">
+        <!-- Messages Section -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Messages</h4>
+                </div>
+                <div class="card-body">
+                    @if($messages->count() > 0)
+                        <div class="list-group">
+                            @foreach($messages->whereNull('parent_id') as $message)
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">{{ $message->subject }}</h5>
+                                        <small>{{ $message->created_at->diffForHumans() }}</small>
+                                    </div>
+                                    <p class="mb-1">{{ $message->message }}</p>
+                                    <small>From: {{ $message->sender->name }} - Regarding: {{ $message->hotel->name }}</small>
+                                    
+                                    <!-- Replies -->
+                                    @foreach($messages->where('parent_id', $message->id) as $reply)
+                                        <div class="ms-4 mt-3 p-3 bg-light rounded">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <small class="fw-bold">{{ $reply->sender->name }}</small>
+                                                <small>{{ $reply->created_at->diffForHumans() }}</small>
+                                            </div>
+                                            <p class="mb-0">{{ $reply->message }}</p>
+                                        </div>
+                                    @endforeach
+
+                                    <!-- Reply Form -->
+                                    <div class="mt-3">
+                                        <form action="{{ route('messages.reply', $message) }}" method="POST">
+                                            @csrf
+                                            <div class="input-group">
+                                                <input type="text" name="message" class="form-control" placeholder="Type your reply..." required>
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fas fa-reply"></i> Reply
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="text-center mb-0">No messages yet.</p>
+                    @endif
+                </div>
             </div>
         </div>
 
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-
-        @if($hotels->count() > 0)
-            @foreach($hotels as $hotel)
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="{{ Storage::url($hotel->photo1) }}" alt="{{ $hotel->name }}" 
-                                     class="img-fluid rounded mb-3">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="d-flex justify-content-between align-items-start mb-3">
-                                    <div>
-                                        <h2 class="mb-1">{{ $hotel->name }}</h2>
-                                        <p class="text-muted mb-0">
-                                            <i class="fas fa-map-marker-alt me-2"></i>
-                                            {{ $hotel->city }}
-                                        </p>
+        <!-- Properties Summary -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Your Properties</h4>
+                </div>
+                <div class="card-body">
+                    @if($hotels->count() > 0)
+                        <div class="list-group">
+                            @foreach($hotels as $hotel)
+                                <a href="{{ route('hotels.show', $hotel) }}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">{{ $hotel->name }}</h6>
+                                        <small>{{ $hotel->city }}</small>
                                     </div>
-                                    <span class="badge bg-primary">{{ ucfirst($hotel->type) }}</span>
-                                </div>
-
-                                <p class="mb-4">{{ Str::limit($hotel->description, 200) }}</p>
-
-                                <div class="d-flex gap-2">
-                                    <a href="{{ route('hotels.edit', $hotel) }}" class="btn btn-primary">
-                                        <i class="fas fa-edit me-2"></i>Edit Property
-                                    </a>
-                                    <a href="{{ route('hotels.show', $hotel) }}" class="btn btn-outline-primary">
-                                        <i class="fas fa-eye me-2"></i>View Property
-                                    </a>
-                                    <form action="{{ route('hotels.destroy', $hotel) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger" 
-                                                onclick="return confirm('Are you sure you want to delete this property?')">
-                                            <i class="fas fa-trash-alt me-2"></i>Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
+                                </a>
+                            @endforeach
                         </div>
-                    </div>
-                </div>
-            @endforeach
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="stat-card">
-                        <div class="stat-icon bg-primary-subtle">
-                            <i class="fas fa-eye"></i>
+                        <div class="mt-3">
+                            <a href="{{ route('hotels.create') }}" class="btn btn-primary btn-sm w-100">
+                                <i class="fas fa-plus"></i> Add New Property
+                            </a>
                         </div>
-                        <div class="stat-content">
-                            <h3>{{ $hotels->count() }}</h3>
-                            <p>Total Properties</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="stat-card">
-                        <div class="stat-icon bg-success-subtle">
-                            <i class="fas fa-comment"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>0</h3>
-                            <p>Total Reviews</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="stat-card">
-                        <div class="stat-icon bg-info-subtle">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="stat-content">
-                            <h3>0</h3>
-                            <p>New Messages</p>
-                        </div>
-                    </div>
+                    @else
+                        <p class="text-center mb-3">No properties yet.</p>
+                        <a href="{{ route('hotels.create') }}" class="btn btn-primary btn-sm w-100">
+                            <i class="fas fa-plus"></i> Add Your First Property
+                        </a>
+                    @endif
                 </div>
             </div>
-        @else
-            <div class="text-center py-5">
-                <div class="mb-4">
-                    <i class="fas fa-hotel fa-4x text-muted"></i>
-                </div>
-                <h3>No Properties Yet</h3>
-                <p class="text-muted mb-4">Get started by adding your first property listing</p>
-                <a href="{{ route('hotels.create') }}" class="btn btn-primary btn-lg">
-                    <i class="fas fa-plus-circle me-2"></i>Add Your First Property
-                </a>
-            </div>
-        @endif
+        </div>
     </div>
 </div>
 
 <style>
-.owner-dashboard-section {
-    background-color: #f8f9fa;
-    min-height: 100vh;
+/* Base Styles */
+:root {
+    --primary-color: #2c5a27;
+    --primary-color-rgb: 44, 90, 39;
+    --secondary-color: #4a7856;
 }
 
-.stat-card {
-    background: white;
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Card Styles */
+.card {
+    border: none;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
-.stat-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card-header {
+    background-color: white;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+/* List Group Styles */
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #f8f9fa;
     margin-bottom: 1rem;
+    padding: 1rem;
 }
 
-.stat-icon i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
+.list-group-item:last-child {
+    border-bottom: none;
 }
 
-.stat-content h3 {
-    font-size: 1.75rem;
-    margin-bottom: 0.25rem;
+/* Button Styles */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
-.stat-content p {
-    color: #6c757d;
-    margin-bottom: 0;
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
-.bg-primary-subtle {
-    background-color: rgba(var(--primary-color-rgb), 0.1);
+/* Reply Section Styles */
+.input-group .form-control {
+    border-right: none;
 }
 
-.bg-success-subtle {
-    background-color: rgba(var(--success-color-rgb), 0.1);
-}
-
-.bg-info-subtle {
-    background-color: rgba(var(--info-color-rgb), 0.1);
+.input-group .btn {
+    border-left: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 </style>
 @endsection

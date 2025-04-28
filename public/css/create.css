@@ -1,0 +1,206 @@
+.create-trip-section {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(56, 102, 65, 0.05), rgba(167, 201, 87, 0.1));
+}
+
+.form-container {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    color: var(--accent-color);
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section .card {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 2px solid rgba(106, 153, 78, 0.2);
+    padding: 1rem;
+    transition: var(--smooth-transition);
+}
+
+.form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(167, 201, 87, 0.25);
+}
+
+.form-control-lg {
+    font-size: 1.1rem;
+    padding: 1rem;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Image Upload */
+.upload-container {
+    width: 100%;
+}
+
+.upload-box {
+    position: relative;
+    border: 2px dashed var(--accent-color);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--smooth-transition);
+    background: rgba(255, 255, 255, 0.5);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-box:hover {
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: var(--primary-color);
+}
+
+.upload-placeholder i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.preview-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.preview-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Input Groups */
+.input-group-text {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    width: 45px;
+    justify-content: center;
+}
+
+/* Form Actions */
+.form-actions {
+    margin-top: 3rem;
+}
+
+.form-actions .btn {
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Alert Styles */
+.alert {
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.alert-info {
+    background-color: rgba(167, 201, 87, 0.15);
+    color: var(--primary-color);
+}
+
+.alert i {
+    color: var(--accent-color);
+}
+
+/* Date Inputs */
+input[type="date"] {
+    min-height: 45px;
+}
+
+/* Animations */
+[data-aos] {
+    transition-duration: 800ms;
+}
+
+/* Responsive Styles */
+@media (max-width: 991.98px) {
+    .create-trip-section {
+        padding-top: 80px;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .upload-box {
+        min-height: 160px;
+    }
+
+    .preview-image {
+        height: 150px;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .create-trip-section {
+        padding-top: 60px;
+    }
+
+    .form-container {
+        padding: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+}

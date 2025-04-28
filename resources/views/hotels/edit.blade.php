@@ -74,7 +74,7 @@
                                 <label class="form-label d-block">Current Main Photo</label>
                                 @if($hotel->photo1)
                                     <img src="{{ Storage::url($hotel->photo1) }}" alt="Main photo" 
-                                         class="img-thumbnail mb-2" style="max-height: 150px">
+                                         class="img-thumbnail mb-2 hotel-preview-image">
                                 @endif
                                 <div class="mt-2">
                                     <label for="photo1" class="form-label">Change Main Photo</label>
@@ -90,7 +90,7 @@
                                 <label class="form-label d-block">Current Additional Photo 1</label>
                                 @if($hotel->photo2)
                                     <img src="{{ Storage::url($hotel->photo2) }}" alt="Additional photo 1" 
-                                         class="img-thumbnail mb-2" style="max-height: 150px">
+                                         class="img-thumbnail mb-2 hotel-preview-image">
                                 @endif
                                 <div class="mt-2">
                                     <label for="photo2" class="form-label">Change Additional Photo 1</label>
@@ -106,7 +106,7 @@
                                 <label class="form-label d-block">Current Additional Photo 2</label>
                                 @if($hotel->photo3)
                                     <img src="{{ Storage::url($hotel->photo3) }}" alt="Additional photo 2" 
-                                         class="img-thumbnail mb-2" style="max-height: 150px">
+                                         class="img-thumbnail mb-2 hotel-preview-image">
                                 @endif
                                 <div class="mt-2">
                                     <label for="photo3" class="form-label">Change Additional Photo 2</label>
@@ -142,6 +142,10 @@
 
 .form-label {
     font-weight: 500;
+}
+
+.hotel-preview-image {
+    max-height: 150px;
 }
 </style>
 @endsection
