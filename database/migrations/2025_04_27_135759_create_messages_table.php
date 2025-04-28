@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sender_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('recipient_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('hotel_id')->constrained()->onDelete('cascade');
             $table->string('subject');
             $table->text('message');
             $table->foreignId('parent_id')->nullable()->constrained('messages')->onDelete('cascade');
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
         });
     }
