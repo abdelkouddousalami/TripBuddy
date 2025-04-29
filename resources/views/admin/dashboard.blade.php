@@ -783,8 +783,6 @@
             });
         });
 
-        // Charts
-        // User Roles Chart
         const userRolesData = {!! json_encode($stats['users_by_role']->pluck('role')) !!};
         const userRolesCounts = {!! json_encode($stats['users_by_role']->pluck('count')) !!};
         
