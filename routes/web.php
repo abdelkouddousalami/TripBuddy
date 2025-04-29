@@ -57,6 +57,8 @@ Route::delete('/hotels/{hotel}', [HotelController::class, 'destroy'])->name('hot
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('/admin/update-role', [AdminController::class, 'updateRole'])->name('admin.updateRole');
+    Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+    Route::post('/admin/users/{user}/suspend', [AdminController::class, 'suspendUser'])->name('admin.suspendUser');
     Route::get('/admin/owner-requests/{ownerRequest}', [OwnerRequestController::class, 'show'])->name('owner-requests.show');
     Route::post('/owner-requests/{ownerRequest}/approve', [OwnerRequestController::class, 'approve'])->name('owner-requests.approve');
     Route::delete('/owner-requests/{ownerRequest}', [OwnerRequestController::class, 'reject'])->name('owner-requests.reject');

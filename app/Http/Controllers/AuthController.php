@@ -22,12 +22,22 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            if(Auth::user()->role === 'admin'){
-                return redirect()->route('admin.dashboard');
-            }else{
-                return redirect()->route('profile.show');
+            $user = Auth::user();
+            
+            if ($user->isSuspended()) {
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Your account is suspended until ' . $user->suspended_until->format('M d, Y H:i:s') . '.',
+                ]);
             }
+
+            $request->session()->regenerate();
+            
+            if($user->role === 'admin'){
+                return redirect()->route('admin.dashboard');
+            }
+            
+            return redirect()->route('profile.show');
         }
             
         return back()->withErrors([

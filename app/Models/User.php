@@ -22,7 +22,9 @@ class User extends Authenticatable
         'email',
         'password',
         'city',
-        'role'
+        'role',
+        'status',
+        'suspended_until'
     ];
 
     /**
@@ -43,6 +45,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'suspended_until' => 'datetime',
     ];
 
     /**
@@ -91,5 +94,33 @@ class User extends Authenticatable
     public function ownerRequests(): HasMany
     {
         return $this->hasMany(OwnerRequest::class);
+    }
+
+    /**
+     * Check if user is suspended
+     */
+    public function isSuspended()
+    {
+        return $this->status === 'suspended' && $this->suspended_until && $this->suspended_until->isFuture();
+    }
+
+    /**
+     * Suspend the user
+     */
+    public function suspend()
+    {
+        $this->status = 'suspended';
+        $this->suspended_until = now()->addHours(24);
+        $this->save();
+    }
+
+    /**
+     * Activate the user
+     */
+    public function activate()
+    {
+        $this->status = 'active';
+        $this->suspended_until = null;
+        $this->save();
     }
 }

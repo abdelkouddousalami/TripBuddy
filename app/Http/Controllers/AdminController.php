@@ -53,4 +53,24 @@ class AdminController extends Controller
 
         return back()->with('success', 'User role updated successfully.');
     }
+
+    public function deleteUser(User $user)
+    {
+        if($user->isAdmin()) {
+            return back()->with('error', 'Cannot delete admin users');
+        }
+        
+        $user->delete();
+        return back()->with('success', 'User deleted successfully.');
+    }
+
+    public function suspendUser(User $user)
+    {
+        if($user->isAdmin()) {
+            return back()->with('error', 'Cannot suspend admin users');
+        }
+        
+        $user->suspend();
+        return back()->with('success', 'User suspended successfully for 24 hours.');
+    }
 }
