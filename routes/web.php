@@ -10,10 +10,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OwnerRequestController;
 use App\Http\Controllers\HotelController;
 
-// Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Trip routes
 Route::resource('trips', TripController::class);
 
 // Guest routes

@@ -8,118 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <style>
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar.scrolled {
-            padding: 0.5rem 0;
-            background-color: rgba(255, 255, 255, 0.98);
-        }
-
-        .navbar-brand img {
-            height: 40px;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled .navbar-brand img {
-            height: 35px;
-        }
-
-        .nav-link {
-            color: #333 !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem !important;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: #007bff !important;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: #007bff;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .auth-buttons .btn {
-            border-radius: 20px;
-            padding: 0.5rem 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .auth-buttons .btn-outline-primary {
-            border-width: 2px;
-        }
-
-        .auth-buttons .btn-outline-primary:hover {
-            background-color: #007bff;
-            color: white;
-            transform: translateY(-1px);
-        }
-
-        .auth-buttons .btn-primary {
-            margin-left: 0.5rem;
-            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
-        }
-
-        .auth-buttons .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
-        }
-
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            padding: 0.5rem;
-        }
-
-        .dropdown-item {
-            padding: 0.7rem 1.5rem;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
-            transform: translateX(5px);
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                background-color: white;
-                padding: 1rem;
-                border-radius: 10px;
-                margin-top: 1rem;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            }
-
-            .auth-buttons {
-                margin-top: 1rem;
-                display: flex;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-        }
-    </style>
+ 
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top" data-aos="fade-down">
@@ -132,7 +21,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- Navigation items in the middle -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
@@ -152,7 +40,6 @@
                     </li>
                 </ul>
                 
-                <!-- Auth buttons on the right -->
                 <div class="auth-buttons">
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">
@@ -194,7 +81,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background"></div>
         <div class="hero-blur-overlay"></div>
@@ -229,7 +115,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="section bg-light">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Why Choose TripBuddy</h2>
@@ -277,7 +162,6 @@
         </div>
     </section>
 
-    <!-- Find Buddy Section -->
     <section id="buddy" class="section">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Find Your Travel Buddy</h2>
@@ -316,7 +200,6 @@
         </div>
     </section>
 
-    <!-- Destinations Section -->
     <section id="destinations" class="section bg-light">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Popular Destinations</h2>
@@ -355,7 +238,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -389,49 +271,8 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS
-            AOS.init({
-                duration: 1000,
-                once: true,
-                offset: 100
-            });
-
-            // Navbar scroll effect with smooth transition
-            const navbar = document.querySelector('.navbar');
-            let lastScroll = 0;
-            
-            function handleScroll() {
-                const currentScroll = window.scrollY;
-                
-                if (currentScroll > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                
-                lastScroll = currentScroll;
-            }
-
-            // Add scroll event listener with throttling
-            let ticking = false;
-            window.addEventListener('scroll', function() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        handleScroll();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            });
-
-            // Initial check
-            handleScroll();
-        });
-    </script>
+    <script src="{{ asset('js/home.js') }}"></script>
 </body>
 </html>

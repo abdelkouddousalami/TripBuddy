@@ -154,6 +154,7 @@ class HotelController extends Controller
         Message::create([
             'hotel_id' => $hotel->id,
             'sender_id' => Auth::id(),
+            'recipient_id' => $hotel->user_id,
             'subject' => $validated['subject'],
             'message' => $validated['message']
         ]);
@@ -172,6 +173,7 @@ class HotelController extends Controller
         Message::create([
             'hotel_id' => $message->hotel_id,
             'sender_id' => Auth::id(),
+            'recipient_id' => $message->sender_id,
             'subject' => 'Re: ' . $message->subject,
             'message' => $validated['message'],
             'parent_id' => $message->id

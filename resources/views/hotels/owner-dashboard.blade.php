@@ -5,7 +5,6 @@
     <h1 class="mb-4">Owner Dashboard</h1>
     
     <div class="row">
-        <!-- Messages Section -->
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -23,7 +22,6 @@
                                     <p class="mb-1">{{ $message->message }}</p>
                                     <small>From: {{ $message->sender->name }} - Regarding: {{ $message->hotel->name }}</small>
                                     
-                                    <!-- Replies -->
                                     @foreach($messages->where('parent_id', $message->id) as $reply)
                                         <div class="ms-4 mt-3 p-3 bg-light rounded">
                                             <div class="d-flex w-100 justify-content-between">
@@ -34,7 +32,6 @@
                                         </div>
                                     @endforeach
 
-                                    <!-- Reply Form -->
                                     <div class="mt-3">
                                         <form action="{{ route('messages.reply', $message) }}" method="POST">
                                             @csrf
@@ -56,7 +53,6 @@
             </div>
         </div>
 
-        <!-- Properties Summary -->
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
@@ -92,14 +88,12 @@
 </div>
 
 <style>
-/* Base Styles */
 :root {
     --primary-color: #2c5a27;
     --primary-color-rgb: 44, 90, 39;
     --secondary-color: #4a7856;
 }
 
-/* Card Styles */
 .card {
     border: none;
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
@@ -110,7 +104,6 @@
     border-bottom: 2px solid #f8f9fa;
 }
 
-/* List Group Styles */
 .list-group-item {
     border: none;
     border-bottom: 1px solid #f8f9fa;
@@ -122,7 +115,6 @@
     border-bottom: none;
 }
 
-/* Button Styles */
 .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
@@ -133,7 +125,6 @@
     border-color: var(--secondary-color);
 }
 
-/* Reply Section Styles */
 .input-group .form-control {
     border-right: none;
 }

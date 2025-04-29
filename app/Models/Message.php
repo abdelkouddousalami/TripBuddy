@@ -13,6 +13,7 @@ class Message extends Model
         'message',
         'hotel_id',
         'sender_id',
+        'recipient_id',
         'parent_id'
     ];
 
