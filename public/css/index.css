@@ -4,7 +4,6 @@
     position: relative;
 }
 
-/* Hero Section Styles */
 .hero-section {
     max-width: 800px;
     margin: 0 auto 3rem;
@@ -48,7 +47,6 @@
     padding-right: 2rem;
 }
 
-/* Hotel Card Styles */
 .hotel-card {
     background: #ffffff;
     border-radius: 20px;
@@ -233,7 +231,6 @@
     box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.2);
 }
 
-/* Pagination Styles */
 .hotels-pagination {
     display: flex;
     justify-content: center;
@@ -271,7 +268,6 @@
     box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.2);
 }
 
-/* Responsive Adjustments */
 @media (max-width: 991.98px) {
     .hero-title {
         font-size: 2.5rem;
@@ -385,7 +381,6 @@
     width: 50%;
 }
 
-/* Auth Buttons */
 .auth-buttons {
     display: flex;
     gap: 1rem;
@@ -427,7 +422,6 @@
     box-shadow: 0 8px 20px rgba(56, 102, 65, 0.3);
 }
 
-/* Dropdown Styles */
 .dropdown-menu {
     border: none;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);

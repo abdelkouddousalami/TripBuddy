@@ -27,7 +27,6 @@
             padding-top: 70px;
         }
 
-        /* Navbar styles */
         .navbar {
     height: 90px !important;
     background: rgba(255, 255, 255, 0.95);
@@ -90,7 +89,6 @@
     width: 50%;
 }
 
-/* Auth Buttons */
 .auth-buttons {
     display: flex;
     gap: 1rem;
@@ -132,7 +130,6 @@
     box-shadow: 0 8px 20px rgba(56, 102, 65, 0.3);
 }
 
-/* Dropdown Styles */
 .dropdown-menu {
     border: none;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -156,7 +153,6 @@
 }
 
 
-        /* Search Section */
         .search-section {
             background: linear-gradient(rgba(56, 102, 65, 0.9), rgba(56, 102, 65, 0.8)), 
                         url("{{ asset('img/hero.jpg') }}") center/cover no-repeat fixed;
@@ -186,7 +182,6 @@
             box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
         }
 
-        /* Trips Grid */
         .trips-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -317,7 +312,6 @@
             margin-bottom: 0;
         }
 
-        /* Pagination */
         .pagination {
             margin-top: 2rem;
             justify-content: center;
@@ -346,7 +340,6 @@
             transform: translateY(-2px);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .search-section {
                 padding: 2rem 0;
@@ -382,17 +375,14 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top" data-aos="fade-down">
         <div class="container">
-            <!-- Logo on the left -->
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('img/logo.png') }}" alt="TripBuddy Logo">
             </a>
             
-            <!-- Hamburger menu for mobile -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <!-- Navigation items in the middle -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
@@ -406,7 +396,6 @@
                     </li>
                 </ul>
                 
-                <!-- Auth buttons on the right -->
                 <div class="auth-buttons">
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">Sign In</a>

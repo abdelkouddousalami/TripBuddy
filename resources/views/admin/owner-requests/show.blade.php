@@ -193,7 +193,6 @@
     </nav>
 
     <div class="container">
-        <!-- Request Details -->
         <div class="detail-card">
             <div class="detail-header">
                 <h1 class="h3 mb-0">Owner Request Details</h1>
@@ -203,7 +202,6 @@
                 </span>
             </div>
 
-            <!-- User Information -->
             <div class="info-section">
                 <h2 class="section-title">
                     <i class="fas fa-user"></i>User Information
@@ -233,7 +231,6 @@
                 </div>
             </div>
 
-            <!-- Property Information -->
             <div class="info-section">
                 <h2 class="section-title">
                     <i class="fas fa-building"></i>Property Information
@@ -263,7 +260,6 @@
                 </div>
             </div>
 
-            <!-- Property Photos -->
             <div class="info-section">
                 <h2 class="section-title">
                     <i class="fas fa-images"></i>Property Photos
@@ -294,7 +290,6 @@
                 </div>
             </div>
 
-            <!-- Ownership Documentation -->
             <div class="info-section">
                 <h2 class="section-title">
                     <i class="fas fa-file-alt"></i>Ownership Documentation
@@ -309,7 +304,6 @@
                 </div>
             </div>
 
-            <!-- Action Buttons -->
             @if($ownerRequest->status === 'pending')
                 <div class="info-section">
                     <h2 class="section-title">
@@ -338,7 +332,6 @@
         </div>
     </div>
 
-    <!-- Photo Viewer Modal -->
     <div class="modal fade" id="photoViewer" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">

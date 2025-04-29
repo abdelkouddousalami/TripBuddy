@@ -1,4 +1,3 @@
-/* The same CSS content as before */
 :root {
     --primary-color: #386641;
     --secondary-color: #6A994E;
@@ -83,7 +82,6 @@
     width: 50%;
 }
 
-/* Auth Buttons */
 .auth-buttons {
     display: flex;
     gap: 1rem;
@@ -125,7 +123,6 @@
     box-shadow: 0 8px 20px rgba(56, 102, 65, 0.3);
 }
 
-/* Dropdown Styles */
 .dropdown-menu {
     border: none;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -148,7 +145,6 @@
     transform: translateX(5px);
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(74, 120, 86, 0.7)), url("../img/hero.jpg") no-repeat center center;
@@ -241,7 +237,6 @@
     opacity: 0.9;
 }
 
-/* Booking Section */
 .booking-section {
     background: var(--light-color);
     padding: 6rem 0;
@@ -256,12 +251,10 @@
     margin-top: auto;
 }
 
-/* Find Buddy Section */
 #buddy .card {
     min-height: 450px;
 }
 
-/* Destinations Section */
 #destinations {
     position: relative;
     z-index: 1;
@@ -302,7 +295,6 @@
     transform: scale(1.1);
 }
 
-/* How It Works Section */
 .step-card {
     text-align: center;
     padding: 2rem;
@@ -322,7 +314,6 @@
     font-size: 2rem;
 }
 
-/* Footer */
 .footer {
     background: var(--primary-color);
     color: var(--light-color);
@@ -360,7 +351,6 @@
     transform: translateY(-5px);
 }
 
-/* Animations */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -383,7 +373,6 @@
     }
 }
 
-/* Section Styles */
 .section {
     padding: var(--section-spacing) 0;
     position: relative;
@@ -411,7 +400,6 @@
     z-index: calc(var(--z-index-base) + 2);
 }
 
-/* Card Styles */
 .card {
     height: 100%;
     display: flex;
@@ -466,7 +454,6 @@
     align-self: stretch;
 }
 
-/* Section specific styles */
 #booking .card {
     height: auto;
     min-height: 450px;
@@ -497,7 +484,6 @@
     min-height: 450px;
 }
 
-/* Button Styles */
 .btn {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -558,7 +544,6 @@
     border-color: var(--dark-accent);
 }
 
-/* Form Controls */
 .form-control {
     border: 2px solid rgba(106, 153, 78, 0.2);
     border-radius: 10px;
@@ -573,7 +558,6 @@
     transform: translateY(-2px);
 }
 
-/* Footer */
 .footer {
     background: var(--primary-color);
     color: var(--light-color);
@@ -613,7 +597,6 @@
     color: var(--light-color);
 }
 
-/* Animations */
 @keyframes backgroundMove {
     from { background-position: 0 0; }
     to { background-position: 100% 100%; }
@@ -641,7 +624,6 @@
     }
 }
 
-/* Responsive Styles */
 @media (max-width: 991.98px) {
     .navbar {
         height: 70px !important;
@@ -843,7 +825,6 @@
     }
 }
 
-/* Container responsive adjustments */
 .container {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -867,7 +848,6 @@
     padding-right: 0.75rem;
 }
 
-/* Utility Classes */
 .text-truncate-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;

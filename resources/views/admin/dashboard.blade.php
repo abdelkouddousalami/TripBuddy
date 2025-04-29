@@ -193,7 +193,6 @@
             border-radius: 0 10px 10px 0;
         }
 
-        /* Enhanced Modal Styles */
         .modal-xl {
             max-width: 1140px;
         }
@@ -377,7 +376,6 @@
             color: #721c24;
         }
 
-        /* Modal Animation Styles */
         .modal.fade .modal-dialog {
             transition: transform 0.3s ease-out;
             transform: translateY(-100px) scale(0.95);
@@ -407,7 +405,6 @@
             transform: translateY(0);
         }
 
-        /* Modal Loading State */
         .modal-loader {
             display: none;
             position: absolute;
@@ -435,18 +432,15 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Fix for modal scroll jump */
         .modal-open {
             padding-right: 0 !important;
             overflow: auto !important;
         }
 
-        /* Prevent content shift when modal opens */
         body {
             overflow-y: scroll !important;
         }
 
-        /* Smooth image loading */
         .photo-item img {
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -456,7 +450,6 @@
             opacity: 1;
         }
 
-        /* Improved modal scrolling */
         .modal-dialog-scrollable .modal-content {
             max-height: 90vh;
         }
@@ -488,7 +481,6 @@
     </nav>
 
     <div class="container py-4">
-        <!-- Quick Stats -->
         <div class="row mb-4">
             <div class="col-md-4">
                 <div class="dashboard-card stat-card">
@@ -532,7 +524,6 @@
             </div>
         </div>
 
-        <!-- Owner Requests Section -->
         <div class="dashboard-card">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="mb-0">
@@ -629,7 +620,6 @@
             </div>
         </div>
 
-        <!-- Other dashboard content -->
         <div class="row mb-4">
             <div class="col-md-6">
                 <div class="dashboard-card">
@@ -649,7 +639,6 @@
             </div>
         </div>
 
-        <!-- Recent Activity -->
         <div class="row">
             <div class="col-md-6">
                 <div class="dashboard-card">
@@ -727,13 +716,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
     <script>
-        // Filter owner requests
         document.querySelectorAll('[data-filter]').forEach(button => {
             button.addEventListener('click', function() {
                 const filter = this.dataset.filter;
                 const rows = document.querySelectorAll('.request-row');
 
-                // Update active state of filter buttons
                 document.querySelectorAll('[data-filter]').forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
 
@@ -747,7 +734,6 @@
             });
         });
 
-        // Confirm approve/reject actions
         document.querySelectorAll('.approve-form').forEach(form => {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -786,7 +772,6 @@
             });
         });
 
-        // Image preview modals
         const photoModals = document.querySelectorAll('[id^="photoModal"]');
         photoModals.forEach(modal => {
             modal.addEventListener('show.bs.modal', function (event) {
@@ -822,7 +807,6 @@
             }
         });
 
-        // Trips by Month Chart
         const tripsByMonthCtx = document.getElementById('tripsByMonthChart').getContext('2d');
         const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         const monthData = new Array(12).fill(0);
@@ -875,22 +859,18 @@
             photoModal.show();
         }
 
-        // Enhanced modal functionality
         function prepareModal(modalId) {
             const modal = document.getElementById(modalId);
             const loader = modal.querySelector('.modal-loader');
             const content = modal.querySelector('.modal-body-content');
             
-            // Show loader, hide content
             loader.classList.add('active');
             content.style.display = 'none';
             
-            // Simulate loading (remove this in production if data is loaded dynamically)
             setTimeout(() => {
                 loader.classList.remove('active');
                 content.style.display = 'block';
                 
-                // Load images smoothly
                 const images = content.querySelectorAll('img');
                 images.forEach(img => {
                     if (img.complete) {
@@ -904,9 +884,7 @@
             }, 500);
         }
 
-        // Handle modal events
         document.querySelectorAll('.detail-modal').forEach(modal => {
-            // Reset modal state when closed
             modal.addEventListener('hidden.bs.modal', function () {
                 const content = this.querySelector('.modal-body-content');
                 const loader = this.querySelector('.modal-loader');
@@ -914,13 +892,11 @@
                 loader.classList.remove('active');
             });
 
-            // Prevent modal from closing when clicking inside
             modal.querySelector('.modal-content').addEventListener('click', function(e) {
                 e.stopPropagation();
             });
         });
 
-        // Prevent body scroll jump
         const originalPadding = window.getComputedStyle(document.body).paddingRight;
         
         document.querySelectorAll('.detail-modal').forEach(modal => {
@@ -934,7 +910,6 @@
             });
         });
 
-        // Add smooth transitions for all modals
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.modal').forEach(modal => {
                 modal.addEventListener('show.bs.modal', function() {

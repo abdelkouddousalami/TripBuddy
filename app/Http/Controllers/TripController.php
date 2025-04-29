@@ -19,12 +19,10 @@ class TripController extends Controller
     {
         $query = Trip::with('user')->latest();
 
-        // Search by city
         if ($request->filled('city')) {
             $query->where('city', 'like', '%' . $request->city . '%');
         }
 
-        // Search by date range
         if ($request->filled('start_date')) {
             $query->where('start_date', '>=', $request->start_date);
         }
@@ -32,7 +30,6 @@ class TripController extends Controller
             $query->where('end_date', '<=', $request->end_date);
         }
 
-        // Filter by budget range
         if ($request->filled('min_budget')) {
             $query->where('budget', '>=', $request->min_budget);
         }
@@ -40,7 +37,6 @@ class TripController extends Controller
             $query->where('budget', '<=', $request->max_budget);
         }
 
-        // Filter by duration
         if ($request->filled('duration')) {
             [$min, $max] = explode('-', $request->duration . '-999');
             $query->whereRaw('DATEDIFF(end_date, start_date) + 1 >= ?', [$min])
@@ -49,10 +45,8 @@ class TripController extends Controller
                   });
         }
 
-        // Only show active trips (end date is in the future)
         $query->where('end_date', '>=', now()->toDateString());
 
-        // Filter by buddies needed
         if ($request->filled('min_buddies')) {
             $query->where('buddies_needed', '>=', $request->min_buddies);
         }
@@ -141,7 +135,6 @@ class TripController extends Controller
         foreach (['photo1', 'photo2', 'photo3'] as $photo) {
             if ($request->hasFile($photo)) {
                 try {
-                    // Delete old photo if exists
                     if ($trip->$photo) {
                         Storage::disk('public')->delete($trip->$photo);
                     }

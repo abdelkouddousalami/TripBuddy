@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'TripBuddy') }}</title>
     
-    <!-- Third-party CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
-    <!-- Base styles -->
     <link href="{{ asset('css/common.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
     
-    <!-- Page specific styles -->
     @if(Request::is('/'))
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     @endif
@@ -43,7 +40,6 @@
         <link href="{{ asset('css/hotels.css') }}" rel="stylesheet">
     @endif
     
-    <!-- Additional styles -->
     @stack('styles')
 </head>
 <body>
@@ -145,14 +141,12 @@
                 });
             });
 
-            // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!navbar.contains(e.target) && isMenuOpen) {
                     navbarToggler.click();
                 }
             });
 
-            // Reset menu state on window resize
             window.addEventListener('resize', function() {
                 if (window.innerWidth >= 992) {
                     navbarCollapse.classList.remove('show');

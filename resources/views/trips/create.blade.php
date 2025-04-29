@@ -225,7 +225,6 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Handle image previews
     function handleImagePreview(input, previewId) {
         const preview = document.getElementById(previewId);
         
@@ -253,11 +252,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize date constraints
     const startDate = document.getElementById('start_date');
     const endDate = document.getElementById('end_date');
     
-    // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
     startDate.min = today;
     
@@ -268,12 +265,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Initialize image previews
     handleImagePreview(document.getElementById('photo1'), 'preview1');
     handleImagePreview(document.getElementById('photo2'), 'preview2');
     handleImagePreview(document.getElementById('photo3'), 'preview3');
 
-    // Form validation
     const form = document.querySelector('form');
     form.addEventListener('submit', function(event) {
         if (!form.checkValidity()) {
@@ -283,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
         form.classList.add('was-validated');
     });
 
-    // Initialize AOS
     AOS.init({
         duration: 800,
         once: true,

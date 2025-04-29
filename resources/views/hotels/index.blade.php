@@ -19,7 +19,6 @@
             </div>
         </div>
 
-        <!-- Filters Section -->
         <div class="filters-section mb-4">
             <div class="row g-3">
                 <div class="col-auto">
@@ -42,7 +41,6 @@
             </div>
         </div>
 
-        <!-- Hotels Grid -->
         <div class="hotels-grid">
             <div class="row g-4">
                 @foreach($hotels as $hotel)

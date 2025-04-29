@@ -1,12 +1,10 @@
 :root {
-    /* Colors */
     --primary-color: #386641;
     --secondary-color: #6a994e;
     --accent-color: #a7c957;
     --dark-accent: #bc4749;
     --light-color: #f2e8cf;
     
-    /* Effects */
     --glass-bg: rgba(255, 255, 255, 0.9);
     --glass-blur: blur(10px);
     --glass-border: 1px solid rgba(255, 255, 255, 0.2);
@@ -14,26 +12,21 @@
     --hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     
-    /* Layout */
     --border-radius: 15px;
     --section-padding: 5rem 0;
     --container-padding: 1rem;
     
-    /* Typography */
     --heading-font: 'Poppins', sans-serif;
     --body-font: 'Inter', sans-serif;
     
-    /* Z-index layers */
     --z-index-dropdown: 1000;
     --z-index-modal: 1050;
     --z-index-header: 1030;
     --z-index-tooltip: 1070;
     
-    /* Transitions */
     --smooth-transition: all 0.3s ease;
 }
 
-/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -64,7 +57,6 @@ img {
     height: auto;
 }
 
-/* Sections */
 .section {
     padding: var(--section-padding);
 }
@@ -77,7 +69,6 @@ img {
     padding: 7rem 0;
 }
 
-/* Containers */
 .container {
     width: 100%;
     padding-right: var(--container-padding);
@@ -86,7 +77,6 @@ img {
     margin-left: auto;
 }
 
-/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -156,7 +146,6 @@ img {
     font-size: 0.9rem;
 }
 
-/* Cards */
 .card {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -171,7 +160,6 @@ img {
     box-shadow: var(--hover-shadow);
 }
 
-/* Utilities */
 .text-primary { color: var(--primary-color) !important; }
 .text-secondary { color: var(--secondary-color) !important; }
 .text-accent { color: var(--accent-color) !important; }
@@ -200,7 +188,6 @@ img {
 .position-relative { position: relative !important; }
 .position-absolute { position: absolute !important; }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -232,7 +219,6 @@ img {
 .animate-fade-in-up { animation: fadeInUp 0.5s ease; }
 .animate-fade-in-down { animation: fadeInDown 0.5s ease; }
 
-/* Responsive Breakpoints */
 @media (min-width: 576px) {
     .container {
         max-width: 540px;

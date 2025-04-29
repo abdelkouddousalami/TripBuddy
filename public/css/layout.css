@@ -1,9 +1,7 @@
-/* Base Layout */
 body {
     padding-top: 70px;
 }
 
-/* Navbar */
 .navbar {
     padding: 1rem 0;
     transition: var(--smooth-transition);
@@ -114,7 +112,6 @@ body {
     margin: 0.5rem 0;
 }
 
-/* Mobile Navigation */
 @media (max-width: 991.98px) {
     .navbar-collapse {
         background: var(--glass-bg);
@@ -152,7 +149,6 @@ body {
     }
 }
 
-/* Smaller screens */
 @media (max-width: 767.98px) {
     .navbar {
         height: 60px !important;
@@ -171,7 +167,6 @@ body {
     }
 }
 
-/* Footer Layout */
 .footer {
     background: var(--primary-color);
     color: white;
@@ -328,7 +323,6 @@ body {
     margin: 0;
 }
 
-/* Responsive Styles */
 @media (max-width: 575.98px) {
     .navbar {
         padding: 0.75rem 0;
@@ -339,8 +333,7 @@ body {
     }
 }
 
-/* Main Content Area */
 main {
-    min-height: calc(100vh - 70px - 400px); /* viewport height - navbar - footer */
+    min-height: calc(100vh - 70px - 400px); 
     padding-bottom: 4rem;
 }

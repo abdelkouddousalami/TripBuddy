@@ -70,7 +70,6 @@
             display: flex;
         }
 
-        /* Left Side - Brand Section */
         .brand-section {
             width: 45%;
             padding: 3rem;
@@ -107,12 +106,11 @@
             margin: 0 auto;
         }
 
-        /* Right Side - Forms Section */
         .forms-section {
             width: 55%;
             padding: 3rem;
             position: relative;
-            overflow: visible; /* Changed from hidden to visible */
+            overflow: visible; 
         }
 
         .forms-container {
@@ -122,19 +120,18 @@
         }
 
         .auth-form {
-            position: relative; /* Changed from absolute to relative */
+            position: relative; 
             width: 100%;
             opacity: 1;
             transition: all 0.5s ease;
             transform: translateX(0);
-            display: block; /* Added display block */
+            display: block;
         }
 
         .auth-form.register-form {
-            display: none; /* Changed from opacity and transform to display none */
+            display: none; 
         }
 
-        /* Form switching animation */
         .auth-form.fade-out {
             opacity: 0;
             transform: translateX(-100%);
@@ -303,7 +300,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
@@ -329,20 +325,16 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="main-content">
         <div class="auth-container">
-            <!-- Left Side - Brand -->
             <div class="brand-section">
                 <img src="{{ asset('img/logo.png') }}" alt="TripBuddy Logo">
                 <h1>Welcome to TripBuddy</h1>
                 <p>Connect with fellow travelers, share experiences, and explore the world together.</p>
             </div>
 
-            <!-- Right Side - Forms -->
             <div class="forms-section">
                 <div class="forms-container">
-                    <!-- Login Form -->
                     <div class="auth-form login-form">
                         <h2 class="mb-4">Sign In</h2>
                         
@@ -392,7 +384,6 @@
                         </div>
                     </div>
 
-                    <!-- Register Form -->
                     <div class="auth-form register-form">
                         <h2 class="mb-4">Create Account</h2>
 
@@ -469,21 +460,17 @@
             const registerForm = document.querySelector('.register-form');
             
             if (loginForm.style.display !== 'none') {
-                // Switch to Register
                 loginForm.style.display = 'none';
                 registerForm.style.display = 'block';
                 
-                // Add animation classes
                 registerForm.classList.add('fade-in');
                 setTimeout(() => {
                     registerForm.classList.remove('fade-in');
                 }, 500);
             } else {
-                // Switch to Login
                 registerForm.style.display = 'none';
                 loginForm.style.display = 'block';
                 
-                // Add animation classes
                 loginForm.classList.add('fade-in');
                 setTimeout(() => {
                     loginForm.classList.remove('fade-in');
@@ -491,7 +478,6 @@
             }
         }
 
-        // Make sure login form is visible by default
         document.addEventListener('DOMContentLoaded', function() {
             const loginForm = document.querySelector('.login-form');
             const registerForm = document.querySelector('.register-form');

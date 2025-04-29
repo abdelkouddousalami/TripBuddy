@@ -451,7 +451,6 @@
                     @endif
                 </div>
 
-                <!-- Local Hotels Section -->
                 <div class="mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-3" data-aos="fade-up" data-aos-delay="300">
                         <h2>Places to Stay in {{ $user->city }}</h2>

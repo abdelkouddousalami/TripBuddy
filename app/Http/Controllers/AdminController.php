@@ -18,7 +18,6 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        // Get statistics
         $stats = [
             'total_users' => User::count(),
             'total_trips' => Trip::count(),

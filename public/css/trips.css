@@ -40,7 +40,6 @@
     align-items: flex-end;
 }
 
-/* Trip Cards */
 .trip-card {
     height: 100%;
     border: none;
@@ -120,7 +119,6 @@
     height: 100px;
 }
 
-/* Filters */
 .filters-section {
     background: var(--light-color);
     padding: 2rem;
@@ -149,7 +147,6 @@
     border-radius: 5px;
 }
 
-/* Pagination */
 .pagination {
     margin-top: 3rem;
     justify-content: center;
@@ -174,7 +171,6 @@
     color: white;
 }
 
-/* Empty State */
 .empty-state {
     text-align: center;
     padding: 4rem 2rem;
@@ -191,7 +187,6 @@
     margin-bottom: 1rem;
 }
 
-/* Loading State */
 .loading-state {
     text-align: center;
     padding: 2rem;
@@ -210,7 +205,6 @@
     to { transform: rotate(360deg); }
 }
 
-/* Responsive Styles */
 @media (max-width: 991.98px) {
     .search-form {
         flex-wrap: wrap;

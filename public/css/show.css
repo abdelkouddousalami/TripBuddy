@@ -49,7 +49,6 @@
     color: var(--accent-color);
 }
 
-/* Trip Details */
 .trip-content {
     padding: 3rem 0;
 }
@@ -101,7 +100,6 @@
     font-weight: 600;
 }
 
-/* Photo Gallery */
 .trip-gallery {
     margin-bottom: 3rem;
 }
@@ -131,7 +129,6 @@
     transform: scale(1.1);
 }
 
-/* Host Info */
 .host-section {
     background: var(--light-color);
     border-radius: var(--border-radius);
@@ -163,7 +160,6 @@
     font-size: 0.9rem;
 }
 
-/* Comments Section */
 .comments-section {
     margin-top: 3rem;
 }
@@ -206,7 +202,6 @@
     line-height: 1.6;
 }
 
-/* Action Buttons */
 .trip-actions {
     position: sticky;
     bottom: 0;
@@ -229,7 +224,6 @@
     letter-spacing: 0.5px;
 }
 
-/* Responsive Styles */
 @media (max-width: 991.98px) {
     .trip-header {
         height: 50vh;
@@ -304,7 +298,6 @@
         padding: 1rem;
     }
 }
-/* Base Styles */
 :root {
     --primary-color: #2c5a27;
     --primary-color-rgb: 44, 90, 39;
@@ -320,7 +313,6 @@
     min-height: 100vh;
 }
 
-/* Header Section */
 .hotel-header {
     position: relative;
     height: 70vh;
@@ -411,7 +403,6 @@
     color: rgba(255,255,255,0.5);
 }
 
-/* Quick Info Section */
 .quick-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -451,7 +442,6 @@
     margin: 0;
 }
 
-/* Content Sections */
 .content-section {
     background: white;
     border-radius: var(--border-radius);
@@ -484,7 +474,6 @@
     color: #495057;
 }
 
-/* Amenities Grid */
 .amenities-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -514,7 +503,6 @@
     text-align: center;
 }
 
-/* Location Section */
 .location-details {
     display: flex;
     flex-direction: column;
@@ -562,7 +550,6 @@
     margin-bottom: 1rem;
 }
 
-/* Sidebar Cards */
 .sidebar-card {
     background: white;
     border-radius: var(--border-radius);
@@ -571,7 +558,6 @@
     margin-bottom: 2rem;
 }
 
-/* Host Card */
 .host-header {
     display: flex;
     align-items: center;
@@ -621,7 +607,6 @@
     color: var(--primary-color);
 }
 
-/* Booking Widget */
 .booking-form .form-group {
     margin-bottom: 1.5rem;
 }
@@ -665,7 +650,6 @@
     box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.2);
 }
 
-/* Responsive Adjustments */
 @media (max-width: 991.98px) {
     .hotel-header {
         height: 50vh;

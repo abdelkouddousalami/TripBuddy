@@ -163,7 +163,6 @@
     letter-spacing: 0.5px;
 }
 
-/* Error States */
 .is-invalid {
     border-color: var(--dark-accent) !important;
 }
@@ -174,7 +173,6 @@
     margin-top: 0.5rem;
 }
 
-/* Alert Messages */
 .alert {
     border-radius: 12px;
     padding: 1rem;
@@ -192,7 +190,6 @@
     color: var(--dark-accent);
 }
 
-/* Responsive Styles */
 @media (max-width: 576px) {
     .auth-section {
         padding: 2rem 1rem;

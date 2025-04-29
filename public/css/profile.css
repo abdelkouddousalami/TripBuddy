@@ -53,7 +53,6 @@
     font-size: 0.9rem;
 }
 
-/* Profile Navigation */
 .profile-nav {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -97,7 +96,6 @@
     background: none;
 }
 
-/* Profile Content */
 .profile-content {
     padding: 3rem 0;
 }
@@ -109,7 +107,6 @@
     font-weight: 600;
 }
 
-/* Bio Section */
 .bio-section {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -139,7 +136,6 @@
     font-size: 0.9rem;
 }
 
-/* Trips Grid */
 .trips-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -182,7 +178,6 @@
     object-fit: cover;
 }
 
-/* Settings Form */
 .settings-section {
     max-width: 600px;
     margin: 0 auto;
@@ -233,7 +228,6 @@
     background: rgba(0,0,0,0.7);
 }
 
-/* Empty States */
 .empty-state {
     text-align: center;
     padding: 3rem 2rem;
@@ -246,7 +240,6 @@
     margin-bottom: 1rem;
 }
 
-/* Responsive Styles */
 @media (max-width: 991.98px) {
     .profile-header {
         padding: 6rem 0 3rem;

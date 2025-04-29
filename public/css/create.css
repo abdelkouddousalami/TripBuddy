@@ -26,7 +26,6 @@
     color: var(--accent-color);
 }
 
-/* Form Sections */
 .form-section {
     margin-bottom: 2rem;
 }
@@ -64,7 +63,6 @@ textarea.form-control {
     resize: vertical;
 }
 
-/* Image Upload */
 .upload-container {
     width: 100%;
 }
@@ -115,7 +113,6 @@ textarea.form-control {
     border-radius: 8px;
 }
 
-/* Input Groups */
 .input-group-text {
     background-color: var(--primary-color);
     color: white;
@@ -124,7 +121,6 @@ textarea.form-control {
     justify-content: center;
 }
 
-/* Form Actions */
 .form-actions {
     margin-top: 3rem;
 }
@@ -135,7 +131,6 @@ textarea.form-control {
     letter-spacing: 0.5px;
 }
 
-/* Alert Styles */
 .alert {
     border: none;
     border-radius: 12px;
@@ -151,17 +146,14 @@ textarea.form-control {
     color: var(--accent-color);
 }
 
-/* Date Inputs */
 input[type="date"] {
     min-height: 45px;
 }
 
-/* Animations */
 [data-aos] {
     transition-duration: 800ms;
 }
 
-/* Responsive Styles */
 @media (max-width: 991.98px) {
     .create-trip-section {
         padding-top: 80px;
