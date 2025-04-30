@@ -22,9 +22,9 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $user = Auth::user();
+            $user = User::find(Auth::id());
             
-            if ($user->isSuspended()) {
+            if ($user && $user->status === 'suspended' && $user->suspended_until) {
                 Auth::logout();
                 return back()->withErrors([
                     'email' => 'Your account is suspended until ' . $user->suspended_until->format('M d, Y H:i:s') . '.',
@@ -33,7 +33,7 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
             
-            if($user->role === 'admin'){
+            if($user && $user->role === 'admin'){
                 return redirect()->route('admin.dashboard');
             }
             
@@ -65,6 +65,7 @@ class AuthController extends Controller
             'password' => Hash::make($validated['password']),
             'city' => $validated['city'],
             'role' => 'tripper',
+            'status' => 'active'
         ]);
 
         Auth::login($user);

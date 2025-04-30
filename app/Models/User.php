@@ -2,13 +2,19 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+interface UserStatus {
+    public function isSuspended(): bool;
+    public function suspend(): void;
+    public function activate(): void;
+}
+
+class User extends Authenticatable implements UserStatus
 {
     use HasFactory, Notifiable;
 
@@ -48,76 +54,60 @@ class User extends Authenticatable
         'suspended_until' => 'datetime',
     ];
 
-    /**
-     * Get the trips associated with the user.
-     */
+    
     public function trips(): HasMany
     {
         return $this->hasMany(Trip::class);
     }
 
-    /**
-     * Get the comments associated with the user.
-     */
+    
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }
 
-    /**
-     * Check if user is admin
-     */
+    
     public function isAdmin(): bool
     {
         return $this->role === 'admin';
     }
 
-    /**
-     * Check if user is tripper
-     */
+   
     public function isTripper(): bool
     {
         return $this->role === 'tripper';
     }
 
-    /**
-     * Check if user is owner
-     */
+  
     public function isOwner(): bool
     {
         return $this->role === 'owner';
     }
 
-    /**
-     * Get the owner requests associated with the user.
-     */
+    
     public function ownerRequests(): HasMany
     {
         return $this->hasMany(OwnerRequest::class);
     }
 
-    /**
-     * Check if user is suspended
-     */
-    public function isSuspended()
+    
+    public function isSuspended(): bool
     {
-        return $this->status === 'suspended' && $this->suspended_until && $this->suspended_until->isFuture();
+        return $this->status === 'suspended' && 
+               $this->suspended_until && 
+               Carbon::parse($this->suspended_until)->isFuture();
     }
 
-    /**
-     * Suspend the user
-     */
-    public function suspend()
+   
+    public function suspend(): void
     {
         $this->status = 'suspended';
         $this->suspended_until = now()->addHours(24);
         $this->save();
     }
 
-    /**
-     * Activate the user
-     */
-    public function activate()
+    
+    public function activate(): void
     {
         $this->status = 'active';
         $this->suspended_until = null;

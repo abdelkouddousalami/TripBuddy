@@ -19,7 +19,6 @@
     --z-index-modal: 1050;
 }
 
-/* Navbar Styling */
 .navbar {
     height: 90px !important;
     background: rgba(255, 255, 255, 0.95);
@@ -80,8 +79,6 @@
 .nav-link:hover::after {
     width: 50%;
 }
-
-/* Auth Buttons */
 .auth-buttons {
     display: flex;
     gap: 1rem;
@@ -123,7 +120,6 @@
     box-shadow: 0 8px 20px rgba(56, 102, 65, 0.3);
 }
 
-/* Dropdown Styles */
 .dropdown-menu {
     border: none;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -146,7 +142,6 @@
     transform: translateX(5px);
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(74, 120, 86, 0.7)), url("../img/hero.jpg") no-repeat center center;

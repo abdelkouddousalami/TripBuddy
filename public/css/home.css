@@ -16,10 +16,8 @@
     --z-index-base: 1;
     --z-index-header: 1030;
     --z-index-dropdown: 1000;
-    --z-index-modal: 1050;
 }
 
-/* Navbar Styling */
 .navbar {
     height: 90px !important;
     background: rgba(255, 255, 255, 0.95);
