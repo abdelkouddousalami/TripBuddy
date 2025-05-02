@@ -7,272 +7,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="{{ asset('css/profil.css') }}" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #386641;
-            --secondary-color: #6A994E;
-            --accent-color: #A7C957;
-            --light-color: #F2E8CF;
-            --dark-accent: #BC4749;
-            --transition: all 0.3s ease;
-        }
+    .profile-header {
+    background: linear-gradient(rgba(56, 102, 65, 0.9), rgba(56, 102, 65, 0.8)), url("{{ asset('img/hero.jpg') }}") center/cover;
+    padding: 4rem 0;
+    color: white;
+    margin-bottom: 3rem;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
 
-        body {
-            background-color: #f8f9fa;
-            padding-top: 70px;
-        }
-
-        .navbar {
-            height: 70px !important;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .navbar-brand img {
-            height: 45px;
-            transition: var(--transition);
-        }
-
-        .nav-link {
-            color: var(--primary-color) !important;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--dark-accent);
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-radius: 12px;
-        }
-
-        .dropdown-item {
-            padding: 0.7rem 1.5rem;
-            transition: var(--transition);
-        }
-
-        .dropdown-item:hover {
-            background: rgba(56, 102, 65, 0.1);
-            color: var(--primary-color);
-        }
-
-        .profile-header {
-            background: linear-gradient(rgba(56, 102, 65, 0.9), rgba(56, 102, 65, 0.8)), url("{{ asset('img/hero.jpg') }}") center/cover;
-            padding: 4rem 0;
-            color: white;
-            margin-bottom: 3rem;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .profile-header h1 {
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .profile-header .lead {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .profile-stats {
-            margin-top: -60px;
-            margin-bottom: 3rem;
-        }
-
-        .stat-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .stat-box:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-box i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .stat-box h3 {
-            color: var(--dark-accent);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .user-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-
-        .user-info h4 {
-            color: var (--primary-color);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .user-info p {
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        .user-info i {
-            margin-right: 0.5rem;
-            width: 20px;
-        }
-
-        .trip-card {
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .trip-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .trip-image {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .trip-card .card-body {
-            padding: 1.5rem;
-        }
-
-        .trip-card .card-title {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .trip-card p i {
-            width: 20px;
-            color: var(--secondary-color);
-        }
-
-        /* Hotel Card Styles */
-        .hotel-card {
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: var(--transition);
-            height: 100%;
-        }
-
-        .hotel-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .hotel-image {
-            position: relative;
-        }
-
-        .hotel-card .card-body {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .hotel-card .card-title {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .hotel-card .user-info {
-            color: #6c757d;
-        }
-
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                border-radius: 0 0 15px 15px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-
-            .nav-link {
-                padding: 0.8rem 1.5rem;
-                border-radius: 8px;
-            }
-
-            .nav-link:hover {
-                background: rgba(56, 102, 65, 0.1);
-            }
-        }
-
-        @media (max-width: 767.98px) {
-            .profile-header {
-                padding: 3rem 0;
-                text-align: center;
-            }
-
-            .stat-box {
-                margin-bottom: 1rem;
-            }
-
-            .user-info {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 575.98px) {
-            body {
-                padding-top: 60px;
-            }
-
-            .navbar {
-                height: 60px !important;
-            }
-
-            .navbar-brand img {
-                height: 35px;
-            }
-
-            .profile-header h1 {
-                font-size: 2rem;
-            }
-
-            .profile-stats {
-                margin-top: -40px;
-            }
-
-            .stat-box {
-                padding: 1.5rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -363,11 +108,12 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="stat-box">
+                            <div class="stat-box edit-profile">
                                 <i class="fas fa-user-edit"></i>
                                 <a href="{{ route('profile.edit') }}" class="btn btn-primary">
                                     Edit Profile
                                 </a>
+                                <p style="font-weight: 500;">make your <br>profile Strong</p>
                             </div>
                         </div>
                         @if($user->role === 'owner')

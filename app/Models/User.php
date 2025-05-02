@@ -35,7 +35,7 @@ class User extends Authenticatable implements UserStatus
         'remember_token',
     ];
 
-    
+
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
@@ -89,9 +89,12 @@ class User extends Authenticatable implements UserStatus
    
     public function suspend(): void
     {
-        $this->status = 'suspended';
-        $this->suspended_until = now()->addHours(24);
-        $this->save();
+    
+            $this->status = 'suspended';
+            $this->suspended_until = now()->addHours(24);
+            $this->save();
+        
+        
     }
 
     

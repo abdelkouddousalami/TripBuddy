@@ -45,7 +45,7 @@
                         <a href="{{ route('login') }}" class="btn btn-outline-primary">
                             <i class="fas fa-sign-in-alt me-2"></i>Sign In
                         </a>
-                        <a href="{{ route('register') }}" class="btn btn-primary">
+                        <a href="{{ route('login') }}" class="btn btn-primary">
                             <i class="fas fa-user-plus me-2"></i>Sign Up
                         </a>
                     @else
