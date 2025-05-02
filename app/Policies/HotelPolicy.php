@@ -8,67 +8,41 @@ use Illuminate\Auth\Access\Response;
 
 class HotelPolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
+    
     public function viewAny(User $user): bool
     {
         return true;
     }
 
-    /**
-     * Determine whether the user can view the model.
-     */
+    
     public function view(User $user, Hotel $hotel): bool
     {
         return true;
     }
 
-    /**
-     * Determine whether the user can create models.
-     */
+   
     public function create(User $user): bool
     {
         return $user->isOwner();
     }
 
-    /**
-     * Determine whether the user can update the model.
-     */
+    
     public function update(User $user, Hotel $hotel): bool
     {
         return $user->id === $hotel->user_id;
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     */
+    
     public function delete(User $user, Hotel $hotel): bool
     {
         return $user->id === $hotel->user_id;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Hotel $hotel): bool
-    {
-        return false;
-    }
+    
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Hotel $hotel): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can contact the hotel owner.
-     */
+    
     public function contact(User $user, Hotel $hotel): bool
     {
-        return true; // Allow any authenticated user to contact hotel owners
+        return true; 
     }
 }

@@ -4,17 +4,10 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-interface UserStatus {
-    public function isSuspended(): bool;
-    public function suspend(): void;
-    public function activate(): void;
-}
-
-class User extends Authenticatable implements UserStatus
+class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
@@ -43,43 +36,43 @@ class User extends Authenticatable implements UserStatus
     ];
 
     
-    public function trips(): HasMany
+    public function trips()
     {
         return $this->hasMany(Trip::class);
     }
 
     
-    public function comments(): HasMany
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
     
-    public function isAdmin(): bool
+    public function isAdmin()
     {
         return $this->role === 'admin';
     }
 
    
-    public function isTripper(): bool
+    public function isTripper()
     {
         return $this->role === 'tripper';
     }
 
   
-    public function isOwner(): bool
+    public function isOwner()
     {
         return $this->role === 'owner';
     }
 
     
-    public function ownerRequests(): HasMany
+    public function ownerRequests()
     {
         return $this->hasMany(OwnerRequest::class);
     }
 
     
-    public function isSuspended(): bool
+    public function isSuspended()
     {
         return $this->status === 'suspended' && 
                $this->suspended_until && 
@@ -87,7 +80,7 @@ class User extends Authenticatable implements UserStatus
     }
 
    
-    public function suspend(): void
+    public function suspend()
     {
     
             $this->status = 'suspended';
@@ -98,7 +91,7 @@ class User extends Authenticatable implements UserStatus
     }
 
     
-    public function activate(): void
+    public function activate()
     {
         $this->status = 'active';
         $this->suspended_until = null;
